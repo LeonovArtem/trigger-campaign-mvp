@@ -1,0 +1,35 @@
+ext {
+    testContainersVersion = '1.16.2'
+}
+
+dependencies {
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation group: 'org.dbunit', name: 'dbunit', version: '2.6.0', {
+        exclude group: 'junit', module: 'junit'
+    }
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.2.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.mockito:mockito-junit-jupiter:2.23.0'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.13.2'
+    testImplementation group: 'com.github.database-rider', name: 'rider-spring', version: '1.13.0', {
+        exclude group: 'junit', module: 'junit'
+    }
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.8'
+
+    testImplementation 'org.cactoos:cactoos:0.46'
+
+    testImplementation group: 'org.testcontainers', name: 'junit-jupiter', version: "${testContainersVersion}"
+    testImplementation group: 'org.testcontainers', name: 'jdbc', version: "${testContainersVersion}"
+    testImplementation group: 'org.testcontainers', name: 'mysql', version: "${testContainersVersion}"
+
+    testImplementation group: 'com.github.database-rider', name: 'rider-junit5', version: '1.13.1'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.8'
+
+    testImplementation 'net.jodah:concurrentunit:0.4.6'
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.2.0'
+}
+
+test {
+    systemProperty 'spring.profiles.active', 'test'
+}

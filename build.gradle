@@ -1,0 +1,67 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'io.freefair.lombok' version '4.1.5'
+    id 'com.google.cloud.tools.jib' version '2.7.1'
+    id "io.freefair.aspectj.post-compile-weaving" version "5.3.0"
+}
+
+group = 'com.mostbet'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+def springCoreVersion = '5.3.6.RELEASE'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+apply from: "$rootDir/gradle/functional-tests.gradle"
+apply from: "$rootDir/gradle/logging.gradle"
+apply from: "$rootDir/gradle/db.gradle"
+apply from: "$rootDir/gradle/jackson.gradle"
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'redis.clients:jedis'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation group: 'org.springframework.integration', name: 'spring-integration-jdbc', version: "${springCoreVersion}"
+    implementation group: 'org.springframework.integration', name: 'spring-integration-jpa', version: "${springCoreVersion}"
+}
+
+lombok {
+    version = '1.18.10'
+    config['lombok.accessors.chain'] = 'true'
+    config['lombok.equalsAndHashCode.callSuper'] = 'skip'
+    config['lombok.anyConstructor.addConstructorProperties'] = 'true'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+compileJava.ajc.options.compilerArgs += "-showWeaveInfo"
+compileJava.ajc.options.compilerArgs += "-verbose"
