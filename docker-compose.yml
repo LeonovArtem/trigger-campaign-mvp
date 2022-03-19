@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  mysql:
+    image: percona/percona-server:8.0.17
+    container_name: trigger-campaign-db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=trigger-campaign
+      - MYSQL_USER=trigger-campaign
+      - MYSQL_PASSWORD=trigger-campaign
+      - TZ=Europe/Moscow
+    ports:
+      - "3307:3306"
+
+  rabbitmq:
+    container_name: trigger-campaign-rabbitmq
+    image: rabbitmq:management
+    ports:
+      - 15674:15672
+      - 5674:5672
+
+  redis:
+    container_name: trigger-campaign-redis
+    image: redis:3.2.5
+    ports:
+      - 6380:6379
