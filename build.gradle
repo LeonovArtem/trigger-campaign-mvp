@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.4'
+    id 'org.springframework.boot' version '2.5.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'io.freefair.lombok' version '4.1.5'
@@ -12,6 +12,9 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 def springCoreVersion = '5.3.6.RELEASE'
+def bonusApiClient = '1.1.1'
+def publicApiClient = '1.0.20'
+def couponApiClient = '1.0.8'
 
 repositories {
     mavenCentral()
@@ -24,6 +27,27 @@ configurations {
     }
     compileOnly {
         extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        credentials {
+            username "$mostbetUser"
+            password "$mostbetPassword"
+        }
+        url 'https://bin.8adm.com/repository/mostbet/'
+    }
+    maven {
+        url 'https://bin.8adm.com/repository/8bit-common/'
+        credentials {
+            username "$mostbetUser"
+            password "$mostbetPassword"
+        }
+    }
+    maven {
+        url 'https://invesdwin.de/repo/invesdwin-oss-remote/'
     }
 }
 
@@ -50,6 +74,10 @@ dependencies {
 
     implementation group: 'org.springframework.integration', name: 'spring-integration-jdbc', version: "${springCoreVersion}"
     implementation group: 'org.springframework.integration', name: 'spring-integration-jpa', version: "${springCoreVersion}"
+
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '3.0.3'
+//    implementation 'com.eightbit.common:feign:0.0.3'
+    implementation group: 'com.mostbet', name: 'public-api-client', version: "${publicApiClient}"
 }
 
 lombok {

@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CampaignCheckServiceImpl implements CampaignCheckService {
-    private final ConditionCheckService conditionCheckServiceImpl;
+    private final ConditionCheckService conditionChecker;
     private final ConditionRepository conditionRepository;
     private final FulfillmentRepository fulfillmentRepository;
 
@@ -55,7 +55,7 @@ public class CampaignCheckServiceImpl implements CampaignCheckService {
 
         boolean isAllFulfilled = false;
         for (Condition condition : activeConditions) {
-            ConditionCheckResponse conditionCheckResponse = conditionCheckServiceImpl.behave(
+            ConditionCheckResponse conditionCheckResponse = conditionChecker.behave(
                     new ConditionCheckRequest(condition, request)
             );
             conditionCheckResponses.add(conditionCheckResponse);
