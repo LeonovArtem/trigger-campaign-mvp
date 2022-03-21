@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 
 public class EventProcessServiceTest extends BaseFunctionalTest {
     @Autowired
-    private EventProcessService eventProcessServiceIml;
+    private EventProcessService eventProcessService;
 
     @ParameterizedTest
     @MethodSource("campaignWithCouponTypeConditionProvider")
@@ -49,7 +49,7 @@ public class EventProcessServiceTest extends BaseFunctionalTest {
 
     private void execute(CouponParamsDto couponParamsDto, boolean expectedIsFulfilledCampaign) {
         RequestDto<RequestDto.Payload> requestDto = assemblerRequest(couponParamsDto);
-        List<CampaignProcessResponse> responses = eventProcessServiceIml.process(requestDto);
+        List<CampaignProcessResponse> responses = eventProcessService.process(requestDto);
         Assertions.assertEquals(responses.size(), 1);
         responses.forEach(campaignProcessResponse -> {
             if (expectedIsFulfilledCampaign) {

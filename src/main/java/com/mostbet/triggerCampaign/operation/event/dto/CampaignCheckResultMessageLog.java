@@ -1,10 +1,10 @@
 package com.mostbet.triggerCampaign.operation.event.dto;
 
-import com.mostbet.triggerCampaign.entity.Event;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mostbet.triggerCampaign.entity.Event;
 import com.vladmihalcea.hibernate.type.json.JsonStringType;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
@@ -14,7 +14,7 @@ import java.io.Serializable;
         @TypeDef(name = "json", typeClass = JsonStringType.class),
 })
 @Getter
-@Setter
+@Builder
 public class CampaignCheckResultMessageLog implements Serializable {
 
     @JsonProperty("user_id")

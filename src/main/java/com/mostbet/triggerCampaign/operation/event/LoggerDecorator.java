@@ -45,15 +45,15 @@ public class LoggerDecorator implements EventProcessService {
             CampaignProcessResponse campaignProcessResponse,
             RequestDto<? extends RequestDto.Payload> request
     ) {
-        CampaignCheckResultMessageLog message = new CampaignCheckResultMessageLog();
-
         CampaignCheckResponse campaignCheckResponse = campaignProcessResponse.getCampaignCheckResponse();
-        message.setUserId(request.getUserId());
-        message.setTriggerCampaignId(campaignCheckResponse.getTriggerCampaignId());
-        message.setFulfilled(campaignCheckResponse.isFulfilled());
-        message.setFulfillmentLimitReached(campaignCheckResponse.isFulfillmentLimitReached());
-        message.setEvent(request.getEvent());
 
-        return message;
+        return CampaignCheckResultMessageLog.builder()
+                .userId(request.getUserId())
+                .triggerCampaignId(campaignCheckResponse.getTriggerCampaignId())
+                .isFulfilled(campaignCheckResponse.isFulfilled())
+                .isFulfillmentLimitReached(campaignCheckResponse.isFulfillmentLimitReached())
+                .event(request.getEvent())
+                .build()
+                ;
     }
 }

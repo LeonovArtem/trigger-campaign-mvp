@@ -12,9 +12,8 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 def springCoreVersion = '5.3.6.RELEASE'
-def bonusApiClient = '1.1.1'
-def publicApiClient = '1.0.20'
-def couponApiClient = '1.0.8'
+def publicApiClientVersion = '1.0.20'
+def internalApiVersion = '1.0.0'
 
 repositories {
     mavenCentral()
@@ -63,6 +62,7 @@ apply from: "$rootDir/gradle/jackson.gradle"
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
@@ -74,10 +74,11 @@ dependencies {
 
     implementation group: 'org.springframework.integration', name: 'spring-integration-jdbc', version: "${springCoreVersion}"
     implementation group: 'org.springframework.integration', name: 'spring-integration-jpa', version: "${springCoreVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '3.0.3'
-//    implementation 'com.eightbit.common:feign:0.0.3'
-    implementation group: 'com.mostbet', name: 'public-api-client', version: "${publicApiClient}"
+    implementation group: 'com.mostbet', name: 'public-api-client', version: "${publicApiClientVersion}"
+    implementation group: 'com.mostbet', name: 'internal-api', version: "${internalApiVersion}"
 }
 
 lombok {
