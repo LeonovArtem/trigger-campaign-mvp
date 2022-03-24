@@ -1,0 +1,9 @@
+{
+  "user_id": 1,
+  "event_name": "coupon_closed",
+  "event_timestamp": "2022-03-24T18:21:29",
+  "payload": {
+    "coupon_id": 13,
+    "coupon_type": "ordinar"
+  }
+}

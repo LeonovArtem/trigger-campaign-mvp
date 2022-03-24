@@ -1,0 +1,9 @@
+{
+  "condition_param": [
+    {
+      "id": 1,
+      "name": "coupon_type",
+      "value": "{}"
+    }
+  ]
+}
