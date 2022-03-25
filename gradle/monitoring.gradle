@@ -1,0 +1,6 @@
+dependencies {
+    implementation 'io.micrometer:micrometer-core:1.5.2'
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.5.2'
+    implementation 'org.springframework.metrics:spring-metrics:0.5.1.RELEASE'
+    implementation 'de.siegmar:logback-gelf:2.2.0'
+}

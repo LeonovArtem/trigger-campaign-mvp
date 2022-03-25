@@ -26,6 +26,8 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 def springCoreVersion = '5.3.6.RELEASE'
+def bonusApiClient = '1.1.1'
+def aspectjVersion = '1.9.5'
 def publicApiClientVersion = '1.0.20'
 def internalApiVersion = '1.0.0'
 
@@ -68,12 +70,13 @@ test {
     useJUnitPlatform()
 }
 
+apply from: "$rootDir/gradle/functional-tests.gradle"
+apply from: "$rootDir/gradle/mapstruct.gradle"
+apply from: "$rootDir/gradle/logging.gradle"
+apply from: "$rootDir/gradle/monitoring.gradle"
 apply from: "$rootDir/gradle/caffeine.gradle"
 apply from: "$rootDir/gradle/db.gradle"
-apply from: "$rootDir/gradle/functional-tests.gradle"
 apply from: "$rootDir/gradle/jackson.gradle"
-apply from: "$rootDir/gradle/logging.gradle"
-apply from: "$rootDir/gradle/mapstruct.gradle"
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -84,10 +87,7 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.integration:spring-integration-redis'
-    implementation 'redis.clients:jedis'
     implementation 'org.springframework.boot:spring-boot-starter-integration'
-
-    implementation 'org.springframework.boot:spring-boot-starter-amqp'
 
     implementation 'com.google.guava:guava:30.1-jre'
 
@@ -98,16 +98,22 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    implementation 'com.eightbit.common:feign:0.0.3'
+
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     implementation group: 'org.javamoney', name: 'moneta', version: '1.3'
     implementation group: 'org.jadira.usertype', name: 'usertype.core', version: '6.0.1.GA'
-
+    implementation group: 'com.mostbet.bonus', name: 'bonus-api-client', version: "${bonusApiClient}"
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '3.0.3'
     implementation group: 'org.springframework.integration', name: 'spring-integration-jdbc', version: "${springCoreVersion}"
     implementation group: 'org.springframework.integration', name: 'spring-integration-jpa', version: "${springCoreVersion}"
 
-    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '3.0.3'
+    implementation group: 'com.newrelic.agent.java', name: 'newrelic-agent', version: "${newRelicVersion}"
+    implementation group: 'com.newrelic.agent.java', name: 'newrelic-api', version: "${newRelicVersion}"
+
     implementation group: 'com.mostbet', name: 'public-api-client', version: "${publicApiClientVersion}"
     implementation group: 'com.mostbet', name: 'internal-api', version: "${internalApiVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
 }
 
 lombok {

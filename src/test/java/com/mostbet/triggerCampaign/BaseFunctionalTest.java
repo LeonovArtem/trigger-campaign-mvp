@@ -20,8 +20,6 @@ import org.springframework.test.web.servlet.MockMvc;
 @ActiveProfiles("test")
 @TestPropertySource(properties = {"app.scheduling.enable=false",})
 @DBUnit(caseInsensitiveStrategy = Orthography.LOWERCASE, batchedStatements = true, allowEmptyFields = true, replacers = DateTimeReplacer.class)
-@SqlMergeMode(SqlMergeMode.MergeMode.MERGE)
-@Sql(value = {"/truncate_all.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public abstract class BaseFunctionalTest {
 
     @Autowired

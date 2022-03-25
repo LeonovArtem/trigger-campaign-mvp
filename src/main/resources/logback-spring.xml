@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="NOP" class="ch.qos.logback.core.helpers.NOPAppender"/>
+
+    <springProfile name="dev">
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="org.hibernate.SQL" level="debug" additivity="false">
+            <appender-ref ref="STDOUT" />
+        </logger>
+    </springProfile>
+
+    <springProfile name="prod, stage, test">
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="de.siegmar.logbackgelf.GelfEncoder">
+                <originHost>localhost</originHost>
+                <includeRawMessage>false</includeRawMessage>
+                <includeMarker>true</includeMarker>
+                <includeMdcData>true</includeMdcData>
+                <includeCallerData>false</includeCallerData>
+                <includeRootCauseData>false</includeRootCauseData>
+                <includeLevelName>false</includeLevelName>
+                <appendNewline>true</appendNewline>
+                <shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                    <pattern>%m%nopex</pattern>
+                </shortPatternLayout>
+                <fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+                    <pattern>%m%n</pattern>
+                </fullPatternLayout>
+                <staticField>app_name:mostbet-bonus</staticField>
+            </encoder>
+        </appender>
+
+    </springProfile>
+
+    <springProfile name="prod, dev, stage, test">
+        <appender name="ASYNC_STDOUT" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="STDOUT"/>
+        </appender>
+
+        <root level="info">
+            <appender-ref ref="ASYNC_STDOUT" />
+        </root>
+
+        <logger name="feign.Logger" additivity="false" level="info">
+            <appender-ref ref="ASYNC_STDOUT" />
+        </logger>
+
+        <logger name="org.hibernate.SQL" level="debug" additivity="false">
+            <appender-ref ref="ASYNC_STDOUT" />
+        </logger>
+
+        <logger name="Hypersistence Optimizer" additivity="false">
+            <appender-ref ref="NOP" />
+        </logger>
+    </springProfile>
+
+</configuration>

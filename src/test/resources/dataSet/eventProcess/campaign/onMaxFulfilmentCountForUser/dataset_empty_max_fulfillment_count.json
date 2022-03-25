@@ -1,0 +1,41 @@
+{
+  "trigger_campaign": [
+    {
+      "id": 1,
+      "name": "campaign with a condition on the type of coupon",
+      "description": "",
+      "is_published": 1,
+      "user_availability": "ALL",
+      "start_at": "2022-01-01 12:00:00",
+      "end_at": "[FUTURE_DATE]",
+      "created_at": "2022-01-01 12:00:00",
+      "updated_at": "[PAST_DATE]"
+    }
+  ],
+  "trigger_campaign_condition": [
+    {
+      "id": 1,
+      "name": "on coupon type",
+      "type": "COUPON"
+    }
+  ],
+  "condition_param": [
+    {
+      "id": 1,
+      "name": "COUPON_TYPE",
+      "value": "{\"value\": \"ordinar\", \"paramName\": \"COUPON_TYPE\"}"
+    }
+  ],
+  "trigger_campaign_condition_params": [
+    {
+      "condition_id": 1,
+      "params_id": 1
+    }
+  ],
+  "trigger_campaign_trigger_campaign_condition": [
+    {
+      "trigger_campaign_id": 1,
+      "trigger_campaign_condition_id": 1
+    }
+  ]
+}

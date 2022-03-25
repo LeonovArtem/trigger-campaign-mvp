@@ -1,5 +1,6 @@
 package com.mostbet.triggerCampaign.event;
 
+import com.github.database.rider.core.api.dataset.DataSet;
 import com.mostbet.triggerCampaign.BaseFunctionalTest;
 import com.mostbet.triggerCampaign.entity.CouponType;
 import com.mostbet.triggerCampaign.entity.Event;
@@ -13,29 +14,36 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.jdbc.Sql;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class EventProcessServiceTest extends BaseFunctionalTest {
+public class CampaignWithConditionOnCouponTest extends BaseFunctionalTest {
     @Autowired
     private EventProcessService eventProcessService;
 
     @ParameterizedTest
     @MethodSource("campaignWithCouponTypeConditionProvider")
-    @Sql(value = {"/fixture/campaign/with_coupon_type_condition.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    void campaignWithCouponTypeCondition(CouponType couponType, boolean expectedIsFulfilledCampaign) {
+    @DataSet(
+            value = {"/dataSet/eventProcess/campaign/onCoupon/type/dataset.json"},
+            executeScriptsBefore = "truncate_all.sql",
+            executeScriptsAfter = "truncate_all.sql"
+    )
+    public void campaignWithCouponTypeCondition(CouponType couponType, boolean expectedIsFulfilledCampaign) {
         CouponParamsDto couponParamsDto = CouponParamsDto.builder().type(couponType).build();
         execute(couponParamsDto, expectedIsFulfilledCampaign);
     }
 
     @ParameterizedTest
     @MethodSource("campaignWithCouponMinAmountConditionProvider")
-    @Sql(value = {"/fixture/campaign/with_min_amount_condition.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    void campaignWithCouponMinAmountCondition(
+    @DataSet(
+            value = {"/dataSet/eventProcess/campaign/onCoupon/minAmount/dataset.json"},
+            executeScriptsBefore = "truncate_all.sql",
+            executeScriptsAfter = "truncate_all.sql"
+    )
+    public void campaignWithCouponMinAmountCondition(
             BigDecimal couponAmount,
             String couponCurrencyCode,
             boolean expectedIsFulfilledCampaign
@@ -71,8 +79,6 @@ public class EventProcessServiceTest extends BaseFunctionalTest {
         return Stream.of(
                 Arguments.of(BigDecimal.valueOf(200), "RUB", true),
                 Arguments.of(BigDecimal.valueOf(100), "RUB", false),
-                Arguments.of(BigDecimal.valueOf(10), "USD", true),
-                Arguments.of(BigDecimal.valueOf(5), "USD", false),
                 Arguments.of(BigDecimal.valueOf(10), "BGN", false)
         );
     }
@@ -87,7 +93,7 @@ public class EventProcessServiceTest extends BaseFunctionalTest {
         return RequestDto
                 .builder()
                 .event(Event.COUPON_CLOSED)
-                .eventDateTime(LocalDateTime.now().plusDays(1))
+                .eventDateTime(LocalDateTime.now())
                 .userId(1)
                 .payload(couponCloseRequestPayloadDto)
                 .build();

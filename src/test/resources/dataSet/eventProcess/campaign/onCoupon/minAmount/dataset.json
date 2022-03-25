@@ -1,0 +1,42 @@
+{
+  "trigger_campaign": [
+    {
+      "id": 1,
+      "name": "campaign with a condition on the type of coupon",
+      "description": "",
+      "is_published": 1,
+      "max_fulfillment_count": 1,
+      "user_availability": "ALL",
+      "start_at": "[PAST_DATE]",
+      "end_at": "[FUTURE_DATE]",
+      "created_at": "[PAST_DATE]",
+      "updated_at": "[PAST_DATE]"
+    }
+  ],
+  "trigger_campaign_condition": [
+    {
+      "id": 1,
+      "name": "on coupon min amount",
+      "type": "COUPON"
+    }
+  ],
+  "condition_param": [
+    {
+      "id": 1,
+      "name": "COUPON_MIN_AMOUNT",
+      "value": "{\"amount\": 200, \"paramName\": \"COUPON_MIN_AMOUNT\", \"currencyCode\": \"RUB\"}"
+    }
+  ],
+  "trigger_campaign_condition_params": [
+    {
+      "condition_id": 1,
+      "params_id": 1
+    }
+  ],
+  "trigger_campaign_trigger_campaign_condition": [
+    {
+      "trigger_campaign_id": 1,
+      "trigger_campaign_condition_id": 1
+    }
+  ]
+}

@@ -13,12 +13,16 @@ public class DateTimeReplacer implements Replacer {
     public void addReplacements(ReplacementDataSet dataSet) {
         final Date future = getDate(2);
         final Date past = getDate(-2);
+        final Date now = getDate(0);
 
         dataSet.addReplacementSubstring(
                 "[FUTURE_DATE]", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(future)
         );
         dataSet.addReplacementSubstring(
                 "[PAST_DATE]", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(past)
+        );
+        dataSet.addReplacementSubstring(
+                "[NOW]", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(now)
         );
     }
 

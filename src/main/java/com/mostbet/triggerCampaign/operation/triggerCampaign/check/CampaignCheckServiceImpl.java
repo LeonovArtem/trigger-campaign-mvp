@@ -70,13 +70,13 @@ public class CampaignCheckServiceImpl implements CampaignCheckService {
     }
 
     private boolean isFulfillmentLimitReached(int userId, TriggerCampaign triggerCampaign) {
-        Integer fulfillmentCount = fulfillmentRepository.countByUserIdAndTriggerCampaign(userId, triggerCampaign);
-        Integer maxFulfillmentCount = triggerCampaign.getMaxFulfillmentCount();
-
-        if (maxFulfillmentCount == null) {
+        Integer triggerCampaignMaxFulfillmentCount = triggerCampaign.getMaxFulfillmentCount();
+        if (triggerCampaignMaxFulfillmentCount == null) {
             return true;
         }
 
-        return fulfillmentCount >= maxFulfillmentCount;
+        Integer fulfillmentCount = fulfillmentRepository.countByUserIdAndTriggerCampaign(userId, triggerCampaign);
+
+        return fulfillmentCount >= triggerCampaignMaxFulfillmentCount;
     }
 }
