@@ -1,7 +1,21 @@
+buildscript {
+
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath "io.freefair.gradle:aspectj-plugin:4.1.6"
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.5.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'idea'
     id 'io.freefair.lombok' version '4.1.5'
     id 'com.google.cloud.tools.jib' version '2.7.1'
     id "io.freefair.aspectj.post-compile-weaving" version "5.3.0"
@@ -15,18 +29,8 @@ def springCoreVersion = '5.3.6.RELEASE'
 def publicApiClientVersion = '1.0.20'
 def internalApiVersion = '1.0.0'
 
-repositories {
-    mavenCentral()
-}
-
-configurations {
-    developmentOnly
-    runtimeClasspath {
-        extendsFrom developmentOnly
-    }
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
+ext {
+    newRelicVersion = '6.4.0'
 }
 
 repositories {
@@ -50,31 +54,56 @@ repositories {
     }
 }
 
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 test {
     useJUnitPlatform()
 }
 
-apply from: "$rootDir/gradle/functional-tests.gradle"
-apply from: "$rootDir/gradle/logging.gradle"
+apply from: "$rootDir/gradle/caffeine.gradle"
 apply from: "$rootDir/gradle/db.gradle"
+apply from: "$rootDir/gradle/functional-tests.gradle"
 apply from: "$rootDir/gradle/jackson.gradle"
+apply from: "$rootDir/gradle/logging.gradle"
+apply from: "$rootDir/gradle/mapstruct.gradle"
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.integration:spring-integration-redis'
     implementation 'redis.clients:jedis'
+    implementation 'org.springframework.boot:spring-boot-starter-integration'
+
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
+
+    implementation 'com.google.guava:guava:30.1-jre'
+
+    implementation 'org.aspectj:aspectjrt:1.9.5'
+    aspect 'org.springframework:spring-aspects'
+    implementation 'org.springframework:spring-instrument'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+    implementation group: 'org.javamoney', name: 'moneta', version: '1.3'
+    implementation group: 'org.jadira.usertype', name: 'usertype.core', version: '6.0.1.GA'
+
     implementation group: 'org.springframework.integration', name: 'spring-integration-jdbc', version: "${springCoreVersion}"
     implementation group: 'org.springframework.integration', name: 'spring-integration-jpa', version: "${springCoreVersion}"
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '3.0.3'
     implementation group: 'com.mostbet', name: 'public-api-client', version: "${publicApiClientVersion}"
@@ -86,10 +115,6 @@ lombok {
     config['lombok.accessors.chain'] = 'true'
     config['lombok.equalsAndHashCode.callSuper'] = 'skip'
     config['lombok.anyConstructor.addConstructorProperties'] = 'true'
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
 }
 
 compileJava.ajc.options.compilerArgs += "-showWeaveInfo"
