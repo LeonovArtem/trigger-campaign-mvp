@@ -1,22 +1,20 @@
-package com.mostbet.triggerCampaign.web;
+package com.mostbet.triggerCampaign.web.api.v1;
 
 import com.mostbet.triggerCampaign.entity.Condition;
-import com.mostbet.triggerCampaign.entity.ConditionParam;
 import com.mostbet.triggerCampaign.repository.ConditionParamRepository;
 import com.mostbet.triggerCampaign.repository.ConditionRepository;
+import com.mostbet.triggerCampaign.web.dto.ConditionCouponDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@RequestMapping("condition")
-public class ConditionController {
+@RequestMapping("/api/v1/condition-coupon")
+public class ConditionCouponController {
     private final ConditionParamRepository conditionParamRepository;
     private final ConditionRepository conditionRepository;
 
@@ -25,13 +23,14 @@ public class ConditionController {
         return conditionRepository.getById(conditionId);
     }
 
-    @GetMapping("params")
-    public List<ConditionParam> getParams() {
-        return conditionParamRepository.findAll();
+    @GetMapping
+    public List<ConditionCouponDto> getList(){
+        return new ArrayList<>();
     }
 
-    @GetMapping("params/{id}")
-    public ConditionParam getParamsById(@PathVariable("id") int id) {
-        return conditionParamRepository.getById(id);
+    @PostMapping
+    public ConditionCouponDto create(@RequestBody ConditionCouponDto conditionCouponDto) {
+
+        return conditionCouponDto;
     }
 }

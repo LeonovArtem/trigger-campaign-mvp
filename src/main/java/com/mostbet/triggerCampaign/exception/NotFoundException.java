@@ -1,4 +1,4 @@
-package com.mostbet.triggerCampaign.web.exception;
+package com.mostbet.triggerCampaign.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

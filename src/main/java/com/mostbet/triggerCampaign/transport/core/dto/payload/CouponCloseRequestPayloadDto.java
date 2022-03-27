@@ -1,5 +1,6 @@
 package com.mostbet.triggerCampaign.transport.core.dto.payload;
 
+import com.mostbet.triggerCampaign.entity.CouponStatus;
 import com.mostbet.triggerCampaign.entity.CouponType;
 import com.mostbet.triggerCampaign.transport.core.dto.RequestDto;
 import com.fasterxml.jackson.annotation.JsonAlias;
@@ -24,4 +25,7 @@ public class CouponCloseRequestPayloadDto implements RequestDto.Payload{
 
     @JsonProperty("coupon_type")
     private CouponType couponType;
+
+    @JsonProperty("coupon_status")
+    private CouponStatus couponStatus;
 }

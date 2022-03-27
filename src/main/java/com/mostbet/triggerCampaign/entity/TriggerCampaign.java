@@ -1,5 +1,6 @@
 package com.mostbet.triggerCampaign.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,17 +31,21 @@ public class TriggerCampaign {
     private String description;
 
     @Column(name = "start_at", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime startAt;
 
     @Column(name = "end_at", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime endAt;
 
     @Column(name = "created_at", updatable = false, nullable = false)
     @Generated(GenerationTime.INSERT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     @Generated(GenerationTime.ALWAYS)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime updatedAt;
 
     @Column(name = "is_published", columnDefinition = "BOOLEAN", nullable = false)
