@@ -12,7 +12,7 @@ import {
     FileField
 } from 'react-admin'
 import {makeStyles} from '@material-ui/core/styles';
-import {Typography, Box} from '@material-ui/core';
+import {Box} from '@material-ui/core';
 
 
 export const useStyles = makeStyles(
@@ -72,9 +72,6 @@ export const TriggerCampaignCreate = (props) => {
                         resettable
                     />
                     <Separator/>
-                    <Typography variant="h6" gutterBottom>
-                        Параметры публикации
-                    </Typography>
                     <DateTimeInput
                         label="Дата начала публикации"
                         source="startAt"
