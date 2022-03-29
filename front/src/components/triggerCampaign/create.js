@@ -9,7 +9,10 @@ import {
     NumberInput,
     SelectInput,
     FileInput,
-    FileField
+    FileField,
+    ReferenceInput,
+    SelectArrayInput,
+    ReferenceArrayInput
 } from 'react-admin'
 import {makeStyles} from '@material-ui/core/styles';
 import {Box} from '@material-ui/core';
@@ -111,10 +114,12 @@ export const TriggerCampaignCreate = (props) => {
                         source="isConfirmationParticipation"
                     />
                 </FormTab>
-
                 <FormTab label="Условия">
-
-
+                    <ReferenceArrayInput
+                        label="На купон"
+                        source="id" reference="condition-coupon">
+                        <SelectInput optionText="name" />
+                    </ReferenceArrayInput>
                 </FormTab>
                 <FormTab label="AB-тест">
 

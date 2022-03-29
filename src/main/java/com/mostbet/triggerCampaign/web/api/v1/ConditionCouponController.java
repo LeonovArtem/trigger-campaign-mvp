@@ -2,6 +2,8 @@ package com.mostbet.triggerCampaign.web.api.v1;
 
 import com.mostbet.triggerCampaign.entity.Condition;
 import com.mostbet.triggerCampaign.entity.dto.ConditionDto;
+import com.mostbet.triggerCampaign.operation.condition.create.ConditionCreateService;
+import com.mostbet.triggerCampaign.operation.condition.getInfo.ConditionInfoService;
 import com.mostbet.triggerCampaign.repository.ConditionParamRepository;
 import com.mostbet.triggerCampaign.repository.ConditionRepository;
 import com.mostbet.triggerCampaign.entity.dto.ConditionCouponDto;
@@ -16,23 +18,25 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RequestMapping("/api/v1/condition-coupon")
 public class ConditionCouponController {
-    private final ConditionParamRepository conditionParamRepository;
-    private final ConditionRepository conditionRepository;
+    private final ConditionCreateService conditionCreateService;
+    private final ConditionInfoService conditionInfoService;
 
     @GetMapping("{id}")
-    public Condition  getById(@PathVariable("id") int conditionId) {
-        return conditionRepository.getById(conditionId);
+    public ConditionDto<ConditionDto.ConditionParams>  getById(@PathVariable("id") int conditionId) {
+        return conditionInfoService.getById(conditionId);
     }
 
     @GetMapping
-    public List<ConditionCouponDto> getList(){
-        return new ArrayList<>();
+    public List<ConditionDto<ConditionDto.ConditionParams>> getList(){
+        return conditionInfoService.getAllByConditionType(Condition.Type.COUPON);
     }
 
     @PostMapping
     public ConditionDto<ConditionDto.ConditionParams> create(
-            @RequestBody ConditionDto<ConditionDto.ConditionParams> conditionCouponDto
+            @RequestBody ConditionDto<ConditionDto.ConditionParams> conditionDto
     ) {
-        return conditionCouponDto;
+        Condition condition = conditionCreateService.create(conditionDto);
+
+        return conditionDto.setId(condition.getId());
     }
 }

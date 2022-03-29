@@ -6,13 +6,19 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.mostbet.triggerCampaign.entity.Condition;
 import com.mostbet.triggerCampaign.entity.dto.conditionParams.CouponParamsDto;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Setter;
 
 import java.io.Serializable;
 
 @Data
+@Setter
+@Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ConditionDto<T extends ConditionDto.ConditionParams> implements Serializable {
+    private Integer id;
+
     @JsonProperty("name")
     private final String name;
 

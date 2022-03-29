@@ -3,6 +3,7 @@ package com.mostbet.triggerCampaign.web.api.v1;
 import com.mostbet.triggerCampaign.entity.TriggerCampaign;
 import com.mostbet.triggerCampaign.entity.dto.TriggerCampaignDto;
 import com.mostbet.triggerCampaign.operation.triggerCampaign.create.CampaignCreateService;
+import com.mostbet.triggerCampaign.operation.triggerCampaign.getInfo.CampaignInfoService;
 import com.mostbet.triggerCampaign.repository.TriggerCampaignRepository;
 import com.mostbet.triggerCampaign.web.api.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -18,15 +19,16 @@ import java.util.List;
 public class TriggerCampaignController {
     private final TriggerCampaignRepository campaignRepository;
     private final CampaignCreateService campaignCreateService;
+    private final CampaignInfoService campaignInfoService;
 
     @GetMapping
-    public List<TriggerCampaign> getList(){
-        return campaignRepository.findAll();
+    public List<TriggerCampaignDto> getList(){
+        return campaignInfoService.getAllCampaign();
     }
 
     @GetMapping("{id}")
-    public TriggerCampaign getOne(@PathVariable("id") TriggerCampaign campaign) {
-        return campaign;
+    public TriggerCampaignDto getOne(@PathVariable("id") int campaignId) {
+        return campaignInfoService.getById(campaignId);
     }
 
     @PostMapping

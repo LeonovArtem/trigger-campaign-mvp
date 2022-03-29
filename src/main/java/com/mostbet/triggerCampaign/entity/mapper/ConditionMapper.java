@@ -11,13 +11,16 @@ import com.mostbet.triggerCampaign.entity.dto.conditionParams.RefillParamsDto;
 import com.mostbet.triggerCampaign.entity.dto.conditionParams.UserParamsDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
+import org.mapstruct.factory.Mappers;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface ConditionMapper {
-    default Condition conditionDtoToCondition(ConditionDto<ConditionDto.ConditionParams> conditionDto) {
+    ConditionMapper INSTANCE = Mappers.getMapper(ConditionMapper.class);
+
+    default Condition dtoToCondition(ConditionDto<ConditionDto.ConditionParams> conditionDto) {
         if (conditionDto == null) {
             return null;
         }
@@ -25,12 +28,20 @@ public interface ConditionMapper {
         Condition condition = new Condition();
         condition.setName(conditionDto.getName());
         condition.setType(conditionDto.getConditionType());
-        condition.setParams(assembleParams(conditionDto));
+        condition.setParams(map(conditionDto));
 
         return condition;
     }
 
-    private List<ConditionParam> assembleParams(ConditionDto<ConditionDto.ConditionParams> conditionDto) {
+    default ConditionDto<ConditionDto.ConditionParams> conditionToDto(Condition condition) {
+        return ConditionDto.builder()
+                .id(condition.getId())
+                .conditionType(condition.getType())
+                .name(condition.getName())
+                .build();
+    }
+
+    default List<ConditionParam> map(ConditionDto<ConditionDto.ConditionParams> conditionDto) {
         switch (conditionDto.getConditionType()) {
             case COUPON:
                 return createParams((CouponParamsDto) conditionDto.getParams());
@@ -42,6 +53,14 @@ public interface ConditionMapper {
                 throw new RuntimeException("Unidentified operation");
 
         }
+    }
+
+    private ConditionParam createConditionParam(ConditionParam.ConditionParamName paramName, ParamValue value) {
+        ConditionParam conditionParam = new ConditionParam();
+        conditionParam.setName(paramName);
+        conditionParam.setValue(value);
+
+        return conditionParam;
     }
 
     private List<ConditionParam> createParams(CouponParamsDto couponParams) {
@@ -78,14 +97,6 @@ public interface ConditionMapper {
         List<ConditionParam> conditionParamList = new ArrayList<>();
 
         return conditionParamList;
-    }
-
-    private ConditionParam createConditionParam(ConditionParam.ConditionParamName paramName, ParamValue value) {
-        ConditionParam conditionParam = new ConditionParam();
-        conditionParam.setName(paramName);
-        conditionParam.setValue(value);
-
-        return conditionParam;
     }
 
 }

@@ -7,12 +7,13 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class TriggerCampaignDto implements Serializable {
-//    private Integer id;
+    private Integer id;
     private String name;
     private String description;
     private LocalDateTime startAt;
@@ -20,4 +21,5 @@ public class TriggerCampaignDto implements Serializable {
     private Boolean isPublished;
     private Integer maxFulfillmentCount;
     private TriggerCampaign.UserAvailability userAvailability;
+    private List<ConditionDto<ConditionDto.ConditionParams>> conditions;
 }

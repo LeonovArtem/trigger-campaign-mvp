@@ -24,4 +24,6 @@ public interface ConditionRepository extends JpaRepository<Condition, Integer> {
             nativeQuery = true
     )
     List<Condition> findActiveConditions(@Param("triggerCampaignId") int triggerCampaignId, @Param("userId") int userId);
+
+    List<Condition> findAllByType(Condition.Type type);
 }
