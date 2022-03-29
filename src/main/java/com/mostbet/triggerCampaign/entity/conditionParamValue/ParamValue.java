@@ -10,6 +10,7 @@ import java.io.Serializable;
         @JsonSubTypes.Type(name = "COUPON_MIN_AMOUNT", value = CouponMinAmount.class),
         @JsonSubTypes.Type(name = "COUPON_MIN_COEFFICIENT", value = CouponMinimalCoefficient.class),
         @JsonSubTypes.Type(name = "COUPON_TYPE", value = CouponTypeDto.class),
+        @JsonSubTypes.Type(name = "COUPON_STATUS", value = CouponStatusDto.class),
         @JsonSubTypes.Type(name = "REFILL_MIN_AMOUNT", value = RefillMinAmount.class),
 })
 public interface ParamValue extends Serializable {

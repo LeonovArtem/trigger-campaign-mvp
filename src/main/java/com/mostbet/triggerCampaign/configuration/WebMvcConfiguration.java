@@ -1,6 +1,6 @@
 package com.mostbet.triggerCampaign.configuration;
 
-import com.mostbet.triggerCampaign.converter.StringToFilterDtoConverter;
+import com.mostbet.triggerCampaign.util.converter.StringToFilterDtoConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;

@@ -1,4 +1,4 @@
-package com.mostbet.triggerCampaign.converter.dto;
+package com.mostbet.triggerCampaign.util.converter.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.AllArgsConstructor;

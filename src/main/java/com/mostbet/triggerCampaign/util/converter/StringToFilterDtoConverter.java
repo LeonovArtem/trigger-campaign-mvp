@@ -1,7 +1,7 @@
-package com.mostbet.triggerCampaign.converter;
+package com.mostbet.triggerCampaign.util.converter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mostbet.triggerCampaign.converter.dto.FilterDto;
+import com.mostbet.triggerCampaign.util.converter.dto.FilterDto;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

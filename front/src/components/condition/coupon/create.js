@@ -11,7 +11,7 @@ import {
     BooleanInput
 } from 'react-admin'
 import {CONDITION_TYPE_COUPON} from "../constants";
-import { InputAdornment } from '@material-ui/core';
+import {InputAdornment} from '@material-ui/core';
 
 export const limitsDefaultValueValues = [
     {currency: 'RUB'},
@@ -50,20 +50,20 @@ export const ConditionCouponCreate = (props) => {
                     />
                     <SelectInput
                         label="Статус купона"
-                        source="couponStatus"
+                        source="params.couponStatus"
                         choices={couponStatuses}
                         resettable
                     />
 
                     <SelectInput
                         label="Тип купона"
-                        source="couponType"
+                        source="params.couponType"
                         choices={couponTypes}
                         resettable
                     />
                     <NumberInput
                         label="Минимальный коэффициент купона"
-                        source="couponMinCoefficient"
+                        source="params.couponMinCoefficient"
                         min={1}
                         step={0.1}
                         fullWidth
@@ -72,23 +72,23 @@ export const ConditionCouponCreate = (props) => {
                     />
                     <SelectInput
                         label="Тип линии"
-                        source="couponLineType"
+                        source="params.couponLineType"
                         choices={couponLineTypes}
                         resettable
                     />
                     <BooleanInput
                         label="Не более одного купона в день"
-                        source="conditionFulfillmentLimitPerDay"
+                        source="params.limitPerDay"
                     />
                     <BooleanInput
                         label="Первая ставка на спорт"
-                        source="couponIsFirst"
+                        source="params.couponIsFirst"
                     />
                 </FormTab>
                 <FormTab label="Минимальные лимиты">
                     <ArrayInput
                         label="Лимиты по валютам"
-                        source="limits"
+                        source="params.limits"
                         defaultValue={limitsDefaultValueValues}
                     >
                         <SimpleFormIterator disableRemove disableAdd disableReordering>

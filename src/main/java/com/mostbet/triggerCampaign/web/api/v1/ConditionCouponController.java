@@ -1,9 +1,10 @@
 package com.mostbet.triggerCampaign.web.api.v1;
 
 import com.mostbet.triggerCampaign.entity.Condition;
+import com.mostbet.triggerCampaign.entity.dto.ConditionDto;
 import com.mostbet.triggerCampaign.repository.ConditionParamRepository;
 import com.mostbet.triggerCampaign.repository.ConditionRepository;
-import com.mostbet.triggerCampaign.web.dto.ConditionCouponDto;
+import com.mostbet.triggerCampaign.entity.dto.ConditionCouponDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,8 +30,9 @@ public class ConditionCouponController {
     }
 
     @PostMapping
-    public ConditionCouponDto create(@RequestBody ConditionCouponDto conditionCouponDto) {
-
+    public ConditionDto<ConditionDto.ConditionParams> create(
+            @RequestBody ConditionDto<ConditionDto.ConditionParams> conditionCouponDto
+    ) {
         return conditionCouponDto;
     }
 }

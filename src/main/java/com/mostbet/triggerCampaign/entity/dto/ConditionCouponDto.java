@@ -1,4 +1,4 @@
-package com.mostbet.triggerCampaign.web.dto;
+package com.mostbet.triggerCampaign.entity.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,9 +13,6 @@ public class ConditionCouponDto {
 
     @JsonProperty("name")
     private String name;
-
-    @JsonProperty("description")
-    private String description;
 
     @JsonProperty("conditionType")
     private Condition.Type conditionType;
