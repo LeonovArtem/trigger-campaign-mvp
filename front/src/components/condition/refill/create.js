@@ -1,11 +1,4 @@
-import {
-    Create,
-    TabbedForm,
-    FormTab,
-    TextInput,
-    SimpleFormIterator,
-    ArrayInput
-} from 'react-admin'
+import {ArrayInput, Create, FormTab, SimpleFormIterator, TabbedForm, TextInput} from 'react-admin'
 import {CONDITION_TYPE_REFILL} from "../constants";
 
 export const styles = {

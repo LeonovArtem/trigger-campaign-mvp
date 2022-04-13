@@ -9,6 +9,8 @@ import com.mostbet.triggerCampaign.repository.ConditionRepository;
 import com.mostbet.triggerCampaign.entity.dto.ConditionCouponDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -27,8 +29,8 @@ public class ConditionCouponController {
     }
 
     @GetMapping
-    public List<ConditionDto<ConditionDto.ConditionParams>> getList(){
-        return conditionInfoService.getAllByConditionType(Condition.Type.COUPON);
+    public Page<Condition> getList(Pageable page){
+        return conditionInfoService.getAll(page);
     }
 
     @PostMapping

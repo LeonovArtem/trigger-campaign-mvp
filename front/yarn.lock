@@ -7396,6 +7396,28 @@ ra-core@^3.19.10:
     query-string "^5.1.1"
     reselect "~3.0.0"
 
+ra-core@^3.19.11:
+  version "3.19.11"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.19.11.tgz#8f33d1e9faeb483d5636e39493e99fb3af8bad59"
+  integrity sha512-sBgfTlhrphB5OgZxJC9wgWk1drUUw5lO3LiudpjmGkjVWvLS2zljwjYooGhKVzJYOwd1/AV41OT6ZK/W3M+Kkg==
+  dependencies:
+    classnames "~2.3.1"
+    date-fns "^1.29.0"
+    eventemitter3 "^3.0.0"
+    inflection "~1.13.1"
+    lodash "~4.17.5"
+    prop-types "^15.6.1"
+    query-string "^5.1.1"
+    reselect "~3.0.0"
+
+ra-data-json-server@^3.19.11:
+  version "3.19.11"
+  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-3.19.11.tgz#928230b285d43541dfe3321e3d2e61505c50c17b"
+  integrity sha512-pZwuHCxua6GVHy7I7Y/K0O2PiPc4p7J8IQfIqX5RAcn3saAZfTMCORo8j97G3wd7apkUseL7iB+nm4Ml+DOXlQ==
+  dependencies:
+    query-string "^5.1.1"
+    ra-core "^3.19.11"
+
 ra-data-simple-rest@^3.19.7:
   version "3.19.10"
   resolved "https://registry.yarnpkg.com/ra-data-simple-rest/-/ra-data-simple-rest-3.19.10.tgz#d7d7cd7d34ee4160552d078ff61c5a29d9c57625"

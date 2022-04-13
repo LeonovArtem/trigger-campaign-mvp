@@ -1,13 +1,13 @@
 import {USER_AVAILABILITY} from "./constants";
 import {
+    BooleanField,
+    DateField,
+    NumberField,
+    RichTextField,
+    SelectField,
     Show,
     SimpleShowLayout,
-    TextField,
-    DateField,
-    RichTextField,
-    BooleanField,
-    SelectField,
-    NumberField
+    TextField
 } from 'react-admin';
 
 export const TriggerCampaignCreateShow = (props) => (

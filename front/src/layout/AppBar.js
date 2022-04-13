@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppBar } from 'react-admin';
+import {AppBar} from 'react-admin';
 
 const CustomAppBar = props => {
     return (

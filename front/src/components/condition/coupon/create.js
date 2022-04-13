@@ -1,14 +1,14 @@
 import {
-    Create,
-    TabbedForm,
-    FormTab,
-    TextInput,
-    SimpleFormIterator,
     ArrayInput,
-    SelectInput,
+    BooleanInput,
+    Create,
+    FormTab,
     NumberInput,
     required,
-    BooleanInput
+    SelectInput,
+    SimpleFormIterator,
+    TabbedForm,
+    TextInput
 } from 'react-admin'
 import {CONDITION_TYPE_COUPON} from "../constants";
 import {InputAdornment} from '@material-ui/core';

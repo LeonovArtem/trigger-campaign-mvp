@@ -1,23 +1,23 @@
 import {
-    List,
+    BooleanField,
     Datagrid,
     DateField,
-    TextField,
-    BooleanField,
     EditButton,
-    ShowButton,
     Filter,
-    TextInput
+    List,
+    NumberInput,
+    ShowButton,
+    TextField
 } from 'react-admin';
 
-const PostFilter = (props) => (
+const TriggerCampaignFilter = (props) => (
     <Filter {...props}>
-        <TextInput label='Поиск' source='q' alwaysOn/>
+        <NumberInput label="Id" source="id" />
     </Filter>
 );
 
 export const TriggerCampaignList = (props) => (
-    <List filters={<PostFilter/>} {...props}>
+    <List filters={<TriggerCampaignFilter/>} {...props}>
         <Datagrid>
             <TextField source="id"/>
             <TextField label="Наименование" source="name"/>

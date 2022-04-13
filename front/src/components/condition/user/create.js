@@ -1,10 +1,4 @@
-import {
-    Create,
-    SelectInput,
-    SimpleForm,
-    TextInput,
-    required,
-} from 'react-admin'
+import {Create, required, SelectInput, SimpleForm, TextInput,} from 'react-admin'
 import {CONDITION_TYPE_USER} from "../constants";
 import {BONUS_TYPE_CHOICE} from "./constants";
 

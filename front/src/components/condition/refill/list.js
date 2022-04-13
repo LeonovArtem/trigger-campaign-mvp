@@ -1,10 +1,4 @@
-import {
-    List,
-    Datagrid,
-    TextField,
-    Filter,
-    TextInput
-} from 'react-admin';
+import {Datagrid, Filter, List, TextField, TextInput} from 'react-admin';
 
 const PostFilter = (props) => (
     <Filter {...props}>

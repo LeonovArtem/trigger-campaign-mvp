@@ -1,18 +1,18 @@
 import {CLIENT_PLATFORMS, USER_AVAILABILITY} from "./constants";
 import {
-    Create,
-    TabbedForm,
-    FormTab,
-    TextInput,
-    DateTimeInput,
+    AutocompleteArrayInput,
     BooleanInput,
-    NumberInput,
-    SelectInput,
-    FileInput,
+    Create,
+    DateTimeInput,
     FileField,
-    ReferenceInput,
-    SelectArrayInput,
-    ReferenceArrayInput
+    FileInput,
+    FormTab,
+    NumberInput,
+    ReferenceArrayInput,
+    required,
+    SelectInput,
+    TabbedForm,
+    TextInput
 } from 'react-admin'
 import {makeStyles} from '@material-ui/core/styles';
 import {Box} from '@material-ui/core';
@@ -43,7 +43,7 @@ export const useStyles = makeStyles(
     }
 );
 export const Separator = () => <Box pt="1em"/>;
-
+const conditionRenderer = choice => ('[id:' + choice.id + '] ' + choice.name);
 
 export const TriggerCampaignCreate = (props) => {
     const classes = useStyles();
@@ -54,6 +54,8 @@ export const TriggerCampaignCreate = (props) => {
                     <TextInput
                         label="Наименование"
                         source="name"
+                        autoFocus
+                        validate={required()}
                         fullWidth
                     />
                     <TextInput
@@ -78,12 +80,14 @@ export const TriggerCampaignCreate = (props) => {
                     <DateTimeInput
                         label="Дата начала публикации"
                         source="startAt"
+                        validate={required()}
                         className={classes.leftForm}
                         formClassName={classes.leftFormGroup}
                     />
                     <DateTimeInput
                         label="Дата окончания публикации"
                         source="endAt"
+                        validate={required()}
                         className={classes.rightForm}
                         formClassName={classes.rightFormGroup}
                     />
@@ -96,6 +100,7 @@ export const TriggerCampaignCreate = (props) => {
                 <FormTab label="Параметры пользователя">
                     <SelectInput
                         label="Доступность пользователям"
+                        validate={required()}
                         source="userAvailability"
                         choices={USER_AVAILABILITY}
                         className={classes.inputForm}
@@ -117,8 +122,32 @@ export const TriggerCampaignCreate = (props) => {
                 <FormTab label="Условия">
                     <ReferenceArrayInput
                         label="На купон"
-                        source="id" reference="condition-coupon">
-                        <SelectInput optionText="name" />
+                        source="conditionsIds.coupons" reference="condition-coupon"
+                        fullWidth
+                    >
+                        <AutocompleteArrayInput
+                            optionText={conditionRenderer}
+                        />
+                    </ReferenceArrayInput>
+
+                    <ReferenceArrayInput
+                        label="На депозит"
+                        source="conditionsIds.refills" reference="condition-coupon"
+                        fullWidth
+                    >
+                        <AutocompleteArrayInput
+                            optionText={conditionRenderer}
+                        />
+                    </ReferenceArrayInput>
+
+                    <ReferenceArrayInput
+                        label="На регистрацию"
+                        source="conditionsIds.users" reference="condition-coupon"
+                        fullWidth
+                    >
+                        <AutocompleteArrayInput
+                            optionText={conditionRenderer}
+                        />
                     </ReferenceArrayInput>
                 </FormTab>
                 <FormTab label="AB-тест">

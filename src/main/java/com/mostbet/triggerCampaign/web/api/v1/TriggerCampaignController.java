@@ -1,7 +1,9 @@
 package com.mostbet.triggerCampaign.web.api.v1;
 
 import com.mostbet.triggerCampaign.entity.TriggerCampaign;
+import com.mostbet.triggerCampaign.entity.dto.CampaignWithConditionIdsDto;
 import com.mostbet.triggerCampaign.entity.dto.TriggerCampaignDto;
+import com.mostbet.triggerCampaign.entity.dto.criteria.TriggerCampaignCriteria;
 import com.mostbet.triggerCampaign.operation.triggerCampaign.create.CampaignCreateService;
 import com.mostbet.triggerCampaign.operation.triggerCampaign.getInfo.CampaignInfoService;
 import com.mostbet.triggerCampaign.repository.TriggerCampaignRepository;
@@ -9,9 +11,9 @@ import com.mostbet.triggerCampaign.web.api.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -22,18 +24,19 @@ public class TriggerCampaignController {
     private final CampaignInfoService campaignInfoService;
 
     @GetMapping
-    public List<TriggerCampaignDto> getList(){
-        return campaignInfoService.getAllCampaign();
+    public Page<TriggerCampaign> getList(Pageable page, TriggerCampaignCriteria criteria) {
+        return campaignInfoService.getAllCampaign(page, criteria);
     }
 
     @GetMapping("{id}")
-    public TriggerCampaignDto getOne(@PathVariable("id") int campaignId) {
+    public TriggerCampaignDto getById(@PathVariable("id") int campaignId) {
         return campaignInfoService.getById(campaignId);
     }
 
     @PostMapping
-    public TriggerCampaign create(@RequestBody TriggerCampaignDto campaign) {
-        return campaignCreateService.create(campaign);
+    public TriggerCampaign create(@RequestBody CampaignWithConditionIdsDto campaignWithConditionIdsDto) {
+
+        return campaignCreateService.create(campaignWithConditionIdsDto);
     }
 
     @PutMapping("{id}")

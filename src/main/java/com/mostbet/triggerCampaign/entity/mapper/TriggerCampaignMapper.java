@@ -3,6 +3,7 @@ package com.mostbet.triggerCampaign.entity.mapper;
 import com.mostbet.triggerCampaign.entity.Condition;
 import com.mostbet.triggerCampaign.entity.ConditionParam;
 import com.mostbet.triggerCampaign.entity.TriggerCampaign;
+import com.mostbet.triggerCampaign.entity.dto.CampaignWithConditionIdsDto;
 import com.mostbet.triggerCampaign.entity.dto.ConditionDto;
 import com.mostbet.triggerCampaign.entity.dto.TriggerCampaignDto;
 import org.mapstruct.Mapper;
@@ -16,6 +17,8 @@ import java.util.stream.Collectors;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface TriggerCampaignMapper {
     TriggerCampaign triggerCampaignDtoToTriggerCampaign(TriggerCampaignDto triggerCampaignDto);
+
+    TriggerCampaign campaignWithConditionIdsToTriggerCampaign(CampaignWithConditionIdsDto triggerCampaignDto);
 
     TriggerCampaignDto triggerCampaignToTriggerCampaignDto(TriggerCampaign triggerCampaign);
 

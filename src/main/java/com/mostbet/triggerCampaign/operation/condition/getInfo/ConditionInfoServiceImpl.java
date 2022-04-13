@@ -6,6 +6,8 @@ import com.mostbet.triggerCampaign.entity.mapper.ConditionMapper;
 import com.mostbet.triggerCampaign.repository.ConditionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,6 +28,11 @@ public class ConditionInfoServiceImpl implements ConditionInfoService {
                 .stream()
                 .map(conditionMapper::conditionToDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<Condition> getAll(Pageable page) {
+        return conditionRepository.findAll(page);
     }
 
     @Override

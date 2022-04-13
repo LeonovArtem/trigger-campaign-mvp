@@ -1,11 +1,4 @@
-import {
-    Edit,
-    SimpleForm,
-    TextInput,
-    DateTimeInput,
-    BooleanInput,
-    NumberInput, SelectInput
-} from 'react-admin';
+import {BooleanInput, DateTimeInput, Edit, NumberInput, SelectInput, SimpleForm, TextInput} from 'react-admin';
 import {USER_AVAILABILITY} from "./constants";
 
 export const TriggerCampaignCreateEdit = (props) => (

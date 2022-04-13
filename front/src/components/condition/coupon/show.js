@@ -1,9 +1,4 @@
-import {
-    Show,
-    SimpleShowLayout,
-    TextField,
-    RichTextField,
-} from 'react-admin';
+import {RichTextField, Show, SimpleShowLayout, TextField,} from 'react-admin';
 
 export const TriggerCampaignCreateShow = (props) => (
     <Show {...props}>

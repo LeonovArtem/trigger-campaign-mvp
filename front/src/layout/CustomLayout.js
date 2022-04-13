@@ -1,5 +1,5 @@
 import TreeMenu from '@bb-tech/ra-treemenu';
-import { Layout } from 'react-admin';
+import {Layout} from 'react-admin';
 import AppBar from './AppBar';
 import CustomMenu from './Menu';
 

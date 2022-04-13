@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+    <property name="LOGS" value="./logs" />
+
     <appender name="NOP" class="ch.qos.logback.core.helpers.NOPAppender"/>
 
     <springProfile name="dev">
@@ -31,7 +33,7 @@
                 <fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
                     <pattern>%m%n</pattern>
                 </fullPatternLayout>
-                <staticField>app_name:mostbet-bonus</staticField>
+                <staticField>app_name:trigger-campaign</staticField>
             </encoder>
         </appender>
 
