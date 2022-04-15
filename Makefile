@@ -16,6 +16,9 @@ build:
 run_spring: clean
 	./gradlew bootRun
 
-run_front:
+rebuild_front:
 	echo "App started: http://localhost:9001/"
 	cd front; rm -r node_modules; yarn; yarn start;
+
+run_front:
+	cd front; yarn start;
