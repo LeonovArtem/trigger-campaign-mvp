@@ -1,16 +1,16 @@
-import {Datagrid, Filter, List, TextField, TextInput} from 'react-admin';
+import {Datagrid, Filter, List, NumberInput, TextField} from 'react-admin';
 
-const PostFilter = (props) => (
+const ConditionCouponFilter = (props) => (
     <Filter {...props}>
-        <TextInput label='Поиск' source='q' alwaysOn/>
+        <NumberInput label="Id" source="id"/>
     </Filter>
 );
 
 export const ConditionCouponList = (props) => (
-    <List filters={<PostFilter/>} {...props}>
+    <List filters={<ConditionCouponFilter/>} {...props}>
         <Datagrid>
+            <TextField source="id"/>
             <TextField label="Наименование" source="name"/>
-            <TextField label="Описание" source="description"/>
         </Datagrid>
     </List>
 )

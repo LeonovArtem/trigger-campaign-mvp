@@ -1,3 +1,4 @@
+import React from 'react';
 import {Admin, Resource} from 'react-admin';
 import CustomLayout from "./layout/CustomLayout";
 import jsonServerProvider from 'ra-data-json-server';
@@ -9,7 +10,7 @@ import conditionsUser from './components/condition/user'
 function App() {
   return (
       <Admin
-          dataProvider={jsonServerProvider('http://localhost:8082/api/v1')}
+          dataProvider={jsonServerProvider(process.env.REACT_APP_DATA_PROVIDER)}
           title="Trigger campaign"
           layout={CustomLayout}
           disableTelemetry
