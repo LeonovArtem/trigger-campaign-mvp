@@ -2,7 +2,7 @@ package com.mostbet.triggerCampaign.operation.conditionParam.check.coupon;
 
 import com.mostbet.triggerCampaign.entity.ConditionParam;
 import com.mostbet.triggerCampaign.entity.CouponType;
-import com.mostbet.triggerCampaign.entity.conditionParamValue.CouponTypeDto;
+import com.mostbet.triggerCampaign.entity.conditionParamValue.coupon.CouponTypeDto;
 import com.mostbet.triggerCampaign.operation.conditionParam.check.CheckerInterface;
 import com.mostbet.triggerCampaign.operation.conditionParam.check.common.dto.ParamCheckerRequest;
 import com.mostbet.triggerCampaign.operation.conditionParam.check.common.dto.ParamCheckerResponse;
@@ -19,10 +19,10 @@ public class CouponTypeChecker implements CheckerInterface {
 
     @Override
     public ParamCheckerResponse behave(ParamCheckerRequest request) {
-        CouponTypeDto conditionCouponType = (CouponTypeDto) request.getConditionParam().getValue();
+        CouponTypeDto conditionCouponType = (CouponTypeDto) request.getConditionParam().getParamValue();
         CouponType couponType = getCouponType(request);
 
-        boolean isFulfilled = conditionCouponType.getValue().equals(couponType);
+        boolean isFulfilled = conditionCouponType.getCouponType().equals(couponType);
 
         return new ParamCheckerResponse(
                 isFulfilled,

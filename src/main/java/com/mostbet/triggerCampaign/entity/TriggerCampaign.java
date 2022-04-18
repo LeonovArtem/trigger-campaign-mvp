@@ -59,7 +59,7 @@ public class TriggerCampaign {
     private UserAvailability userAvailability;
 
     @Fetch(FetchMode.JOIN)
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "trigger_campaign_trigger_campaign_condition",
             joinColumns = @JoinColumn(name = "trigger_campaign_id"),

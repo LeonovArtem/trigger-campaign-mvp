@@ -11,6 +11,8 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import org.springframework.data.domain.Pageable;
 
+import java.util.Objects;
+
 @Component
 public class ApiPaginationResolver implements HandlerMethodArgumentResolver {
 
@@ -26,8 +28,8 @@ public class ApiPaginationResolver implements HandlerMethodArgumentResolver {
             NativeWebRequest webRequest,
             WebDataBinderFactory binderFactory
     ) throws Exception {
-        Integer end = Integer.valueOf(webRequest.getParameter("_end"));
-        Integer start = Integer.valueOf(webRequest.getParameter("_start"));
+        var end = Integer.parseInt(Objects.requireNonNull(webRequest.getParameter("_end")));
+        var start = Integer.parseInt(Objects.requireNonNull(webRequest.getParameter("_start")));
         String order = String.valueOf(webRequest.getParameter("_order"));
         String sort = String.valueOf(webRequest.getParameter("_sort"));
         int pageSize = end - start;

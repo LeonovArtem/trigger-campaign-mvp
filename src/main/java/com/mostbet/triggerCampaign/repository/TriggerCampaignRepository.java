@@ -1,6 +1,7 @@
 package com.mostbet.triggerCampaign.repository;
 
 import com.mostbet.triggerCampaign.entity.TriggerCampaign;
+import com.mostbet.triggerCampaign.entity.dto.CampaignWithConditionIdsDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,5 +28,5 @@ public interface TriggerCampaignRepository extends JpaRepository<TriggerCampaign
     )
     List<TriggerCampaign> findActiveTriggerCampaignByUserId(@Param("userId") int userId, LocalDateTime now);
 
-    Page<TriggerCampaign> findAllById(Pageable pageable, Integer id);
+    Page<TriggerCampaign> findById(Pageable pageable, Integer id);
 }

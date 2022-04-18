@@ -19,6 +19,17 @@ plugins {
     id 'io.freefair.lombok' version '4.1.5'
     id 'com.google.cloud.tools.jib' version '2.7.1'
     id "io.freefair.aspectj.post-compile-weaving" version "5.3.0"
+    id 'com.appland.appmap' version '1.1.0'
+}
+
+// Set up AppMap agent, default parameters
+appmap {
+    configFile = file("$projectDir/appmap.yml")
+    outputDirectory = file("$buildDir/appmap")
+    skip = false
+    debug = "info"
+    debugFile = file("$buildDir/appmap/agent.log")
+    eventValueSize = 1024
 }
 
 group = 'com.mostbet'

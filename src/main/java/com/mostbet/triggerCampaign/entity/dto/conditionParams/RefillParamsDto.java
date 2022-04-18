@@ -6,5 +6,5 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RefillParamsDto implements ConditionDto.ConditionParams {
+public class RefillParamsDto implements ConditionDto.Params {
 }

@@ -127,26 +127,29 @@ export const TriggerCampaignCreate = (props) => {
                     >
                         <AutocompleteArrayInput
                             optionText={conditionRenderer}
+                            suggestionLimit={5}
                         />
                     </ReferenceArrayInput>
 
                     <ReferenceArrayInput
                         label="На депозит"
-                        source="conditionsIds.refills" reference="condition-coupon"
+                        source="conditionsIds.refills" reference="condition-refill"
                         fullWidth
                     >
                         <AutocompleteArrayInput
                             optionText={conditionRenderer}
+                            suggestionLimit={5}
                         />
                     </ReferenceArrayInput>
 
                     <ReferenceArrayInput
                         label="На регистрацию"
-                        source="conditionsIds.users" reference="condition-coupon"
+                        source="conditionsIds.users" reference="condition-user"
                         fullWidth
                     >
                         <AutocompleteArrayInput
                             optionText={conditionRenderer}
+                            suggestionLimit={5}
                         />
                     </ReferenceArrayInput>
                 </FormTab>

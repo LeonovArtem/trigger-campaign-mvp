@@ -31,26 +31,26 @@ public class ConditionParam {
     private ConditionParamName name;
 
     @Type(type = "json")
-    @Column(columnDefinition = "json", updatable = false)
-    private ParamValue value;
+    @Column(name = "value", columnDefinition = "json")
+    private ParamValue paramValue;
 
     public enum ConditionParamName {
-        COUPON_MIN_COEFFICIENT,
+        COUPON_TYPE,
         COUPON_STATUS,
+        COUPON_MIN_COEFFICIENT,
         COUPON_LINE_CATEGORY,
+        COUPON_LINE_TYPE,
         COUPON_LINE_MATCH,
         COUPON_LINE_SUBCATEGORY,
         COUPON_MIN_AMOUNT,
         COUPON_MIN_SUM_AMOUNT,
-        COUPON_IS_FREE,
-        COUPON_IS_PROMO,
         COUPON_IS_ACTIVE_BONUS,
-        COUPON_TYPE,
         COUPON_EXPRESS_COUNT_LOSE_BET,
         COUPON_EXPRESS_MIN_COUNT_BET,
         COUPON_EXPRESS_MINIMAL_COEFFICIENT_BET,
         COUPON_EXPRESS_MIN_COUNT_WIN_BET,
-        COUPON_LINE_TYPE,
+        COUPON_IS_FREE,
+        COUPON_IS_PROMO,
         COUPON_IS_FIRST,
 
         CONDITION_FULFILLMENT_SEQUENCE,

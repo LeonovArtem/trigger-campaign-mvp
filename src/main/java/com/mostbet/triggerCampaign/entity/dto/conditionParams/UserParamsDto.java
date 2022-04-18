@@ -6,5 +6,5 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserParamsDto implements ConditionDto.ConditionParams {
+public class UserParamsDto implements ConditionDto.Params {
 }

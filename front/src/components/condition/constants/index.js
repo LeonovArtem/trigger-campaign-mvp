@@ -11,3 +11,9 @@ export const CONDITION_TYPES = [
     {id: CONDITION_TYPE_FULFILLMENT, name: 'CONDITION_FULFILLMENT'},
     {id: CONDITION_TYPE_EVENT, name: 'EVENT'},
 ];
+
+export const limitsDefaultValues = [
+    {currency: 'RUB'},
+    {currency: 'USD'},
+    {currency: 'EUR'},
+];

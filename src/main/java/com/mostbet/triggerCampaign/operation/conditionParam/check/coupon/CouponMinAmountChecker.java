@@ -1,7 +1,7 @@
 package com.mostbet.triggerCampaign.operation.conditionParam.check.coupon;
 
 import com.mostbet.triggerCampaign.entity.ConditionParam;
-import com.mostbet.triggerCampaign.entity.conditionParamValue.CouponMinAmount;
+import com.mostbet.triggerCampaign.entity.conditionParamValue.coupon.CouponMinAmountDto;
 import com.mostbet.triggerCampaign.operation.conditionParam.check.CheckerInterface;
 import com.mostbet.triggerCampaign.operation.conditionParam.check.common.dto.ParamCheckerRequest;
 import com.mostbet.triggerCampaign.operation.conditionParam.check.common.dto.ParamCheckerResponse;
@@ -18,10 +18,10 @@ public class CouponMinAmountChecker implements CheckerInterface {
 
     @Override
     public ParamCheckerResponse behave(ParamCheckerRequest request) {
-        CouponMinAmount conditionCouponMinAmount = (CouponMinAmount) request.getConditionParam().getValue();
+        CouponMinAmountDto conditionCouponMinAmountDto = (CouponMinAmountDto) request.getConditionParam().getParamValue();
         CouponCloseRequestPayloadDto coupon = getCoupon(request);
-        boolean isFulfilled = isCurrenciesEqual(coupon, conditionCouponMinAmount) &&
-                              isAmountsEqual(coupon, conditionCouponMinAmount);
+        boolean isFulfilled = isCurrenciesEqual(coupon, conditionCouponMinAmountDto) &&
+                              isAmountsEqual(coupon, conditionCouponMinAmountDto);
 
         return new ParamCheckerResponse(
                 isFulfilled,
@@ -35,11 +35,11 @@ public class CouponMinAmountChecker implements CheckerInterface {
                 .getEventRequest().getPayload();
     }
 
-    private boolean isCurrenciesEqual(CouponCloseRequestPayloadDto coupon, CouponMinAmount conditionCouponMinAmount) {
-        return coupon.getCurrencyCode().equals(conditionCouponMinAmount.getCurrencyCode());
+    private boolean isCurrenciesEqual(CouponCloseRequestPayloadDto coupon, CouponMinAmountDto conditionCouponMinAmountDto) {
+        return coupon.getCurrencyCode().equals(conditionCouponMinAmountDto.getCurrencyCode());
     }
 
-    private boolean isAmountsEqual(CouponCloseRequestPayloadDto coupon, CouponMinAmount conditionCouponMinAmount) {
-        return coupon.getAmount().compareTo(conditionCouponMinAmount.getAmount()) >= 0;
+    private boolean isAmountsEqual(CouponCloseRequestPayloadDto coupon, CouponMinAmountDto conditionCouponMinAmountDto) {
+        return coupon.getAmount().compareTo(conditionCouponMinAmountDto.getAmount()) >= 0;
     }
 }

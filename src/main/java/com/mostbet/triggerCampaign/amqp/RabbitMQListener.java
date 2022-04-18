@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class RabbitMQListener {
-    private final EventProcessService eventProcessServiceIml;
+    private final EventProcessService eventProcessService;
 
     @RabbitListener(
             queues = "${amqp.rabbit.queue.trigger_campaign.queue_name}",
             concurrency = "${amqp.rabbit.queue.trigger_campaign.cnt_consumers}"
     )
     public void processQueue(final RequestDto<? extends RequestDto.Payload> message) {
-        eventProcessServiceIml.process(message);
+        eventProcessService.process(message);
     }
 }

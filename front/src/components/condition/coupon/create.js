@@ -2,6 +2,7 @@ import {
     ArrayInput,
     BooleanInput,
     Create,
+    FormDataConsumer,
     FormTab,
     NumberInput,
     required,
@@ -10,35 +11,25 @@ import {
     TabbedForm,
     TextInput
 } from 'react-admin'
-import {CONDITION_TYPE_COUPON} from "../constants";
+import {CONDITION_TYPE_COUPON, limitsDefaultValues} from "../constants";
 import {InputAdornment} from '@material-ui/core';
+import {couponLineTypes, couponStatuses, couponTypes, COUPON_TYPE_EXPRESS} from "./constants";
+import Typography from "@material-ui/core/Typography";
+import React from "react";
+import {makeStyles} from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
-export const limitsDefaultValueValues = [
-    {currency: 'RUB'},
-    {currency: 'USD'},
-    {currency: 'EUR'},
-];
-
-export const couponStatuses = [
-    {id: 'WIN', name: 'Купон выиграл'},
-    {id: 'LOSE', name: 'Купон проиграл'},
-];
-
-export const couponTypes = [
-    {id: 'ORDINAR', name: 'Ординар'},
-    {id: 'EXPRESS', name: 'Экспресс'},
-    {id: 'SYSTEM', name: 'Система'},
-];
-
-export const couponLineTypes = [
-    {id: 'LIVE', name: 'LIVE'},
-    {id: 'PREGAME', name: 'PREGAME'},
-];
-
+const useStyles = makeStyles({
+    expressRow: {minWidth: '32em', marginRight: '1em'},
+    mainColor: {color: '#283593'},
+    expressContainer: {marginBottom: '2em'},
+})
 
 export const ConditionCouponCreate = (props) => {
+    const classes = useStyles();
     return (
-        <Create title="Создание" {...props}>
+        <Create title="Создание" {...props} >
             <TabbedForm initialValues={{conditionType: CONDITION_TYPE_COUPON}}>
                 <FormTab label="Параметры">
                     <TextInput
@@ -61,6 +52,52 @@ export const ConditionCouponCreate = (props) => {
                         choices={couponTypes}
                         resettable
                     />
+                    <FormDataConsumer fullWidth>
+                        {
+                            ({formData}) => formData.params && formData.params.couponType === COUPON_TYPE_EXPRESS ?
+                                (
+                                    <Card className={classes.expressContainer} >
+                                        <CardContent>
+                                            <Typography
+                                                variant="h6"
+                                                gutterBottom align="left"
+                                                className={classes.mainColor}
+                                            >
+                                                Параметры купона с типом "Экспресс"
+                                            </Typography>
+                                            <hr/>
+                                            <div>
+                                                <NumberInput
+                                                    label="Минимальное количество ставок"
+                                                    source="params.express.minCountBet"
+                                                    className={classes.expressRow}
+                                                />
+                                                <NumberInput
+                                                    label="Количество проигрышных ставок"
+                                                    source="params.express.countLoseBet"
+                                                    className={classes.expressRow}
+                                                />
+                                                <NumberInput
+                                                    label="Минимальное количество выигрышных ставок"
+                                                    source="params.express.countWinBet"
+                                                    className={classes.expressRow}
+                                                />
+                                            </div>
+                                            <NumberInput
+                                                label="Минимальный коэффициент ставки"
+                                                source="params.express.minCoefficientBet"
+                                                className={classes.expressRow}
+                                            />
+                                        </CardContent>
+                                    </Card>
+                                ) :
+                                (
+                                    formData.params
+                                        ? formData.params.express = null
+                                        : null
+                                )
+                        }
+                    </FormDataConsumer>
                     <NumberInput
                         label="Минимальный коэффициент купона"
                         source="params.couponMinCoefficient"
@@ -89,7 +126,7 @@ export const ConditionCouponCreate = (props) => {
                     <ArrayInput
                         label="Лимиты по валютам"
                         source="params.limits"
-                        defaultValue={limitsDefaultValueValues}
+                        defaultValue={limitsDefaultValues}
                     >
                         <SimpleFormIterator disableRemove disableAdd disableReordering>
                             <TextInput

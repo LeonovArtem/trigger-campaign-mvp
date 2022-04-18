@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class TriggerCampaignCriteria {
     private Integer id;
+    private Boolean isPublished;
 }

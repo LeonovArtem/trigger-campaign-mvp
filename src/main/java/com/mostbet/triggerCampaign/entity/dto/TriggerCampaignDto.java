@@ -21,11 +21,14 @@ public class TriggerCampaignDto implements Serializable {
 
     private String description;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private LocalDateTime createdAt;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime startAt;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.Y")
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.Y HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime endAt;
 
     private Boolean isPublished;
@@ -34,5 +37,5 @@ public class TriggerCampaignDto implements Serializable {
 
     private TriggerCampaign.UserAvailability userAvailability;
 
-    private List<ConditionDto<ConditionDto.ConditionParams>> conditions;
+    private List<ConditionDto<ConditionDto.Params>> conditions;
 }

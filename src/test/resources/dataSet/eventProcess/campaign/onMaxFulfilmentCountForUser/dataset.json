@@ -24,7 +24,7 @@
     {
       "id": 1,
       "name": "COUPON_TYPE",
-      "value": "{\"value\": \"ordinar\", \"paramName\": \"COUPON_TYPE\"}"
+      "value": "{\"couponType\": \"ordinar\", \"paramName\": \"COUPON_TYPE\"}"
     }
   ],
   "trigger_campaign_condition_params": [

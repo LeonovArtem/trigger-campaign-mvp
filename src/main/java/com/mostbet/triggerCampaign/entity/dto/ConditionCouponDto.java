@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mostbet.triggerCampaign.entity.Condition;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -20,11 +21,12 @@ public class ConditionCouponDto {
     @JsonProperty("limits")
     private List<CurrencyLimitDto> limits;
 
+    @Data
     public static class CurrencyLimitDto {
         @JsonProperty("currency")
         private String currencyCode;
 
-        @JsonProperty("amount")
-        private String amount;
+        @JsonProperty("minAmount")
+        private BigDecimal minAmount;
     }
 }

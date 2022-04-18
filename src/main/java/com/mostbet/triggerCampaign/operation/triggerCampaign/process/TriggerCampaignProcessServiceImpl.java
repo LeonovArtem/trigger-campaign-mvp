@@ -22,8 +22,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class TriggerCampaignProcessServiceImpl implements TriggerCampaignProcessService {
     private final CampaignCheckService triggerCampaignCheck;
-    private final FulfillmentRegisterService fulfillmentRegisterServiceImpl;
-    private final ConditionFulfillmentRegisterService conditionFulfillmentRegisterServiceImpl;
+    private final FulfillmentRegisterService fulfillmentRegisterService;
+    private final ConditionFulfillmentRegisterService conditionFulfillmentRegisterService;
     private final RewardCreatorService rewardCreatorServiceImpl;
 
     @Override
@@ -34,7 +34,7 @@ public class TriggerCampaignProcessServiceImpl implements TriggerCampaignProcess
         registerFulfilledConditions(request, campaignCheckResponse);
 
         if (campaignCheckResponse.isFulfilled()) {
-            campaignProcessResponse.fulfillment(fulfillmentRegisterServiceImpl.behave(request));
+            campaignProcessResponse.fulfillment(fulfillmentRegisterService.behave(request));
             campaignProcessResponse.rewardCreatorResponse(rewardCreatorServiceImpl.createForUser());
         }
 
@@ -58,7 +58,7 @@ public class TriggerCampaignProcessServiceImpl implements TriggerCampaignProcess
                     .CreatedAt(request.getEventRequest().getEventDateTime())
                     .build();
 
-            conditionFulfillmentRegisterServiceImpl.behave(conditionFulfillmentRegisterDto);
+            conditionFulfillmentRegisterService.behave(conditionFulfillmentRegisterDto);
         });
     }
 }

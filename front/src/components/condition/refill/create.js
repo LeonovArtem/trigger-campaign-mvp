@@ -1,5 +1,5 @@
 import {ArrayInput, Create, FormTab, SimpleFormIterator, TabbedForm, TextInput} from 'react-admin'
-import {CONDITION_TYPE_REFILL} from "../constants";
+import {CONDITION_TYPE_REFILL, limitsDefaultValues} from "../constants";
 
 export const styles = {
     price: {width: '7em'},
@@ -9,11 +9,6 @@ export const styles = {
     widthFormGroup: {display: 'inline-block'},
     heightFormGroup: {display: 'inline-block', marginLeft: 32},
 };
-
-export const limitsDefaultValueValues = [
-    {currency: 'RUB', amount: ''},
-    {currency: 'USD', amount: ''},
-];
 
 export const ConditionRefillCreate = (props) => {
     return (
@@ -34,8 +29,13 @@ export const ConditionRefillCreate = (props) => {
                     />
                 </FormTab>
                 <FormTab label="Лимиты">
-                    <ArrayInput label="Добавить по одному" source="limits" defaultValue={limitsDefaultValueValues}>
-                        <SimpleFormIterator disableRemove disableAdd disableReordering>
+                    <ArrayInput label="Лимиты по валютам" source="limits" defaultValue={limitsDefaultValues}>
+                        <SimpleFormIterator
+                            disableRemove
+                            disableAdd
+                            disableReordering
+                            getItemLabel={(index) => null}
+                        >
                             <TextInput source="currency" label="Валюта" disabled/>
                             <TextInput source="amount" label="Минимальная сумма"/>
                         </SimpleFormIterator>

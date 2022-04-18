@@ -3,9 +3,11 @@ import TreeMenu from '@bb-tech/ra-treemenu';
 
 const CustomMenu = props => {
     return (
-        <TreeMenu {...props} >
+        <div>
+            <TreeMenu {...props} >
 
-        </TreeMenu>
+            </TreeMenu>
+        </div>
     );
 };
 

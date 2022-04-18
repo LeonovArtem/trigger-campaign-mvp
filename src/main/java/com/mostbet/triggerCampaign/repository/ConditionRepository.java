@@ -1,6 +1,9 @@
 package com.mostbet.triggerCampaign.repository;
 
 import com.mostbet.triggerCampaign.entity.Condition;
+import com.mostbet.triggerCampaign.entity.TriggerCampaign;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
