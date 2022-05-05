@@ -1,6 +1,5 @@
 import {CLIENT_PLATFORMS, USER_AVAILABILITY} from './constants';
 import {
-    AutocompleteArrayInput,
     BooleanInput,
     Create,
     DateTimeInput,
@@ -8,11 +7,12 @@ import {
     FileInput,
     FormTab,
     NumberInput,
-    ReferenceArrayInput,
+    ReferenceInput,
     required,
     SelectInput,
     TabbedForm,
     TextInput,
+    useTranslate
 } from 'react-admin';
 
 const conditionRenderer = condition => {
@@ -21,8 +21,9 @@ const conditionRenderer = condition => {
 };
 
 export const TriggerCampaignCreate = props => {
+    const translate = useTranslate();
     return (
-        <Create title="Создание" {...props}>
+        <Create {...props}>
             <TabbedForm
                 defaultValues={{
                     conditionsIds: {
@@ -30,121 +31,113 @@ export const TriggerCampaignCreate = props => {
                         users: [],
                         coupons: [],
                     }
-            }}
+                }}
             >
-                <FormTab label="Параметры">
+                <FormTab label='resources.campaign.tabs.params'>
                     <TextInput
-                        label="Наименование"
-                        source="name"
+                        source='name'
                         autoFocus
                         validate={required()}
                         fullWidth
                     />
                     <TextInput
-                        label="Описание"
                         multiline
-                        source="description"
+                        source='description'
                         fullWidth
                     />
                     <NumberInput
-                        label="Количество отработок по триггеру"
-                        source="maxFulfillmentCount"
-                        // className={classes.inputForm}
+                        source='maxFulfillmentCount'
+                        className='inputForm'
                     />
                     <SelectInput
-                        label="Платформы для срабатывания триггера"
-                        source="clientPlatforms"
+                        source='clientPlatforms'
                         choices={CLIENT_PLATFORMS}
-                        // className={classes.inputForm}
+                        className='inputForm'
                         resettable
                     />
-                    <DateTimeInput
-                        label="Дата начала публикации"
-                        source="startAt"
-                        validate={required()}
-                        // className={classes.leftForm}
-                        // formClassName={classes.leftFormGroup}
-                    />
-                    <DateTimeInput
-                        label="Дата окончания публикации"
-                        source="endAt"
-                        validate={required()}
-                        // className={classes.rightForm}
-                        // formClassName={classes.rightFormGroup}
-                    />
-                    <BooleanInput label="Опубликовать" source="isPublished"/>
+                    <div>
+                        <DateTimeInput
+                            source='startAt'
+                            validate={required()}
+                            sx={{
+                                display: 'inline-block',
+                                width: '19em',
+                            }}
+
+                        />
+                        <DateTimeInput
+                            source='endAt'
+                            validate={required()}
+                            sx={{
+                                display: 'inline-block',
+                                marginLeft: '32px',
+                                width: '19em',
+                            }}
+                        />
+                    </div>
+                    <BooleanInput source='isPublished' />
                 </FormTab>
 
-                <FormTab label="Параметры пользователя">
+                <FormTab label='resources.campaign.tabs.userParams'>
                     <SelectInput
-                        label="Доступность пользователям"
                         validate={required()}
-                        source="userAvailability"
+                        source='userAvailability'
                         choices={USER_AVAILABILITY}
-                        // className={classes.inputForm}
+                        className='inputForm'
                         resettable
                     />
                     <FileInput
-                        label="Список пользователей"
-                        source="usersFile"
-                        accept="application/csv"
+                        source='usersFile'
+                        accept='application/csv'
                         placeholder={
-                            <p>
-                                Перетащите файл для загрузки или щелкните, чтобы
-                                выбрать его.
-                            </p>
+                            <p>{translate('resources.campaign.hints.fileInput')}</p>
                         }>
                         <FileField source="src" title="title"/>
                     </FileInput>
                     <BooleanInput
-                        label="Подтверждение участия"
-                        source="isConfirmationParticipation"
+                        source='isConfirmationParticipation'
                     />
                 </FormTab>
-                <FormTab label="Условия">
-                    <ReferenceArrayInput
-                        label="На купон"
-                        source="conditionsIds.coupons"
+                <FormTab label='resources.campaign.tabs.conditions'>
+                    <ReferenceInput
+                        source='conditionsIds.coupons'
                         reference="condition-coupon"
-                        fullWidth
+                        perPage={5}
                     >
-                        <AutocompleteArrayInput
+                        <SelectInput
+                            label='resources.campaign.fields.conditions.coupon'
                             optionText={conditionRenderer}
-                            suggestionLimit={5}
                             fullWidth
                         />
-                    </ReferenceArrayInput>
+                    </ReferenceInput>
 
-                    <ReferenceArrayInput
-                        label="На депозит"
-                        source="conditionsIds.refills"
-                        reference="condition-refill"
-                        fullWidth
+                    <ReferenceInput
+                        source='conditionsIds.refills'
+                        reference='condition-refill'
+                        perPage={5}
                     >
-                        <AutocompleteArrayInput
+                        <SelectInput
+                            label='resources.campaign.fields.conditions.refill'
                             optionText={conditionRenderer}
-                            suggestionLimit={5}
                             fullWidth
-                            name={'test'}
                         />
-                    </ReferenceArrayInput>
+                    </ReferenceInput>
 
-                    <ReferenceArrayInput
-                        label="На регистрацию"
-                        source="conditionsIds.users"
-                        reference="condition-user"
-                        fullWidth
+                    <ReferenceInput
+                        source='conditionsIds.users'
+                        reference='condition-user'
+                        perPage={5}
                     >
-                        <AutocompleteArrayInput
+                        <SelectInput
+                            label='resources.campaign.fields.conditions.user'
                             optionText={conditionRenderer}
-                            suggestionLimit={5}
                             fullWidth
                         />
-                    </ReferenceArrayInput>
+                    </ReferenceInput>
                 </FormTab>
-                <FormTab label="AB-тест"></FormTab>
-                <FormTab label="Emarsys"></FormTab>
-                <FormTab label="Лендинги"></FormTab>
+                <FormTab label='resources.campaign.tabs.abTest'></FormTab>
+                <FormTab label='resources.campaign.tabs.emailSegments'></FormTab>
+                <FormTab label='resources.campaign.tabs.landings'></FormTab>
             </TabbedForm>
         </Create>
     );

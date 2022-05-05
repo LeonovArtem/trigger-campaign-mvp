@@ -28,7 +28,7 @@ public class Condition {
     private Type type;
 
     @Fetch(FetchMode.JOIN)
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "trigger_campaign_condition_params",
             joinColumns = @JoinColumn(name = "condition_id"),

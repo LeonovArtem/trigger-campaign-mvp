@@ -13,7 +13,7 @@ import {
     TextInput,
 } from 'react-admin';
 import { CONDITION_TYPE_COUPON, limitsDefaultValues } from '../constants';
-import { InputAdornment, Typography, Card, CardContent } from '@mui/material';
+import { InputAdornment, Typography, Card, CardContent, Divider } from '@mui/material';
 import {
     couponLineTypes,
     couponStatuses,
@@ -25,13 +25,13 @@ export const ConditionCouponCreate = props => {
     return (
         <Create title="Создание" {...props}>
             <TabbedForm
-                initialValues={{ conditionType: CONDITION_TYPE_COUPON }}
+                defaultValues={{ conditionType: CONDITION_TYPE_COUPON }}
             >
                 <FormTab label="Параметры">
                     <TextInput
                         label="Наименование"
-                        autoFocus
                         source="name"
+                        autoFocus
                         fullWidth
                         validate={required()}
                     />
@@ -42,6 +42,7 @@ export const ConditionCouponCreate = props => {
                         defaultValue={null}
                         emptyValue={null}
                         emptyText={'Любой'}
+                        className='inputForm'
                         resettable
                     />
 
@@ -52,6 +53,7 @@ export const ConditionCouponCreate = props => {
                         defaultValue={null}
                         emptyValue={null}
                         emptyText={'Любой'}
+                        className='inputForm'
                         resettable
                     />
                     <FormDataConsumer fullWidth>
@@ -59,38 +61,54 @@ export const ConditionCouponCreate = props => {
                             formData.params &&
                             formData.params.couponType ===
                                 COUPON_TYPE_EXPRESS ? (
-                                <Card>
+                                <Card
+                                    sx={{
+                                        marginBottom: '20px',
+                                        borderRadius: 0,
+                                    }}
+                                >
                                     <CardContent>
                                         <Typography
                                             variant="h6"
                                             gutterBottom
                                             align="left"
-                                            // className={classes.mainColor}
                                         >
                                             Параметры купона с типом "Экспресс"
                                         </Typography>
-                                        <hr />
+                                        <Divider
+                                            sx={{
+                                                marginBottom: '5px'
+                                            }}
+                                        />
                                         <div>
                                             <NumberInput
                                                 label="Минимальное количество ставок"
                                                 source="params.express.minCountBet"
-                                                // className={classes.expressRow}
+                                                sx={{
+                                                    minWidth: '32em', marginRight: '1em'
+                                                }}
                                             />
                                             <NumberInput
                                                 label="Количество проигрышных ставок"
                                                 source="params.express.countLoseBet"
-                                                // className={classes.expressRow}
+                                                sx={{
+                                                    minWidth: '32em', marginRight: '1em'
+                                                }}
                                             />
                                             <NumberInput
                                                 label="Минимальное количество выигрышных ставок"
                                                 source="params.express.countWinBet"
-                                                // className={classes.expressRow}
+                                                sx={{
+                                                    minWidth: '32em'
+                                                }}
                                             />
                                         </div>
                                         <NumberInput
                                             label="Минимальный коэффициент ставки"
                                             source="params.express.minCoefficientBet"
-                                            // className={classes.expressRow}
+                                            sx={{
+                                                minWidth: '32em'
+                                            }}
                                         />
                                     </CardContent>
                                 </Card>
@@ -104,7 +122,7 @@ export const ConditionCouponCreate = props => {
                         source="params.couponMinCoefficient"
                         min={1}
                         step={0.1}
-                        fullWidth
+                        className='inputForm'
                         validate={required()}
                     />
                     <SelectInput
@@ -114,6 +132,7 @@ export const ConditionCouponCreate = props => {
                         defaultValue={null}
                         emptyValue={null}
                         emptyText={'Любой'}
+                        className='inputForm'
                         resettable
                     />
                     <BooleanInput
@@ -152,8 +171,13 @@ export const ConditionCouponCreate = props => {
                             <TextInput
                                 label="Минимальная сумма"
                                 source="minAmount"
+                                className='inputForm'
                             />
-                            <TextInput label="Оборот" source="minSumAmount" />
+                            <TextInput
+                                label="Оборот"
+                                source="minSumAmount"
+                                className='inputForm'
+                            />
                         </SimpleFormIterator>
                     </ArrayInput>
                 </FormTab>

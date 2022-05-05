@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="LOGS" value="./logs" />
-
     <appender name="NOP" class="ch.qos.logback.core.helpers.NOPAppender"/>
 
     <springProfile name="dev">
@@ -11,12 +9,10 @@
             </encoder>
         </appender>
 
-        <logger name="org.hibernate.SQL" level="debug" additivity="false">
-            <appender-ref ref="STDOUT" />
-        </logger>
+        <logger name="com.devbro.api.advices.ControllerExceptionAdvice" level="DEBUG"/>
     </springProfile>
 
-    <springProfile name="prod, stage, test">
+    <springProfile name="prod, stage">
         <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
             <encoder class="de.siegmar.logbackgelf.GelfEncoder">
                 <originHost>localhost</originHost>
@@ -33,7 +29,7 @@
                 <fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
                     <pattern>%m%n</pattern>
                 </fullPatternLayout>
-                <staticField>app_name:trigger-campaign</staticField>
+                <staticField>app_name:devbro-worker-api</staticField>
             </encoder>
         </appender>
 
@@ -48,7 +44,7 @@
             <appender-ref ref="ASYNC_STDOUT" />
         </root>
 
-        <logger name="feign.Logger" additivity="false" level="info">
+        <logger name="feign.Logger" additivity="false" level="debug">
             <appender-ref ref="ASYNC_STDOUT" />
         </logger>
 

@@ -67,7 +67,7 @@ export const TriggerCampaignCreate = (props) => {
                     <NumberInput
                         label="Количество отработок по триггеру"
                         source="maxFulfillmentCount"
-                        className={classes.inputForm}
+                        className='inputForm'
                     />
                     <SelectInput
                         label="Платформы для срабатывания триггера"

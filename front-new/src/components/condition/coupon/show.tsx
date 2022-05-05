@@ -9,7 +9,7 @@ export const ConditionCouponShow = (props: any) => {
 
     if (!record) return null;
     return (
-        <Card>
+        <Card className={'showCard'}>
             <CardContent>
                 <Grid container spacing={2}>
                     <Grid item xs={6}>

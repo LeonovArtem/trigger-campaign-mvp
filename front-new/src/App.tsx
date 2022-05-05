@@ -17,8 +17,8 @@ import conditionsUser from './components/condition/user';
 import Configuration from './configuration/Configuration';
 
 const i18nProvider = polyglotI18nProvider(locale => {
-    if (locale === 'fr') {
-        return import('./i18n/fr').then(messages => messages.default);
+    if (locale === 'ru') {
+        return import('./i18n/ru').then(messages => messages.default);
     }
 
     // Always fallback on english

@@ -13,7 +13,7 @@ const Configuration = () => {
     const [theme, setTheme] = useTheme();
 
     return (
-        <Card>
+        <Card sx={{marginTop: 1}}>
             <Title title={translate('pos.configuration')} />
             <CardContent>
                 <Box sx={{ width: '10em', display: 'inline-block' }}>
@@ -59,10 +59,10 @@ const Configuration = () => {
                 <Button
                     variant="contained"
                     sx={{ margin: '1em' }}
-                    color={locale === 'fr' ? 'primary' : 'secondary'}
-                    onClick={() => setLocale('fr')}
+                    color={locale === 'ru' ? 'primary' : 'secondary'}
+                    onClick={() => setLocale('ru')}
                 >
-                    fr
+                    ru
                 </Button>
             </CardContent>
         </Card>

@@ -47,7 +47,7 @@ const Menu = ({ dense = false }: MenuProps) => {
             <MenuItemLink
                 to="/campaign"
                 state={{ _scrollToTop: true }}
-                primaryText={translate(`resources.reviews.name`, {
+                primaryText={translate(`resources.campaign.name`, {
                     smart_count: 2,
                 })}
                 leftIcon={<TriggerCampaignMenuIcon />}
