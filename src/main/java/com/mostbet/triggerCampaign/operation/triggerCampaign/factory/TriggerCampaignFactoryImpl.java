@@ -33,7 +33,7 @@ public class TriggerCampaignFactoryImpl implements TriggerCampaignFactory {
     @Override
     @Transactional
     public TriggerCampaign create(CampaignWithConditionIdsDto triggerCampaignDto) {
-        List<Condition> conditions = conditionRepository.findAllById(triggerCampaignDto.getAllConditionIds());
+        List<Condition> conditions = conditionRepository.findAllById(triggerCampaignDto.getConditionIds());
         TriggerCampaign triggerCampaign = campaignMapper.campaignWithConditionIdsToTriggerCampaign(triggerCampaignDto);
         triggerCampaign.setConditions(new HashSet<>(conditions));
         campaignRepository.save(triggerCampaign);

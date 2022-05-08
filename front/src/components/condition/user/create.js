@@ -1,21 +1,26 @@
-import {Create, required, SelectInput, SimpleForm, TextInput,} from 'react-admin'
-import {CONDITION_TYPE_USER} from "../constants";
-import {BONUS_TYPE_CHOICE} from "./constants";
+import {
+    Create,
+    required,
+    SelectInput,
+    SimpleForm,
+    TextInput,
+} from 'react-admin';
+import { CONDITION_TYPE_USER } from '../constants';
+import { BONUS_TYPE_CHOICE } from './constants';
 
 export const styles = {
-    price: {width: '7em'},
-    width: {width: '7em'},
-    height: {width: '7em'},
-    stock: {width: '7em'},
-    widthFormGroup: {display: 'inline-block'},
-    heightFormGroup: {display: 'inline-block', marginLeft: 32},
+    price: { width: '7em' },
+    width: { width: '7em' },
+    height: { width: '7em' },
+    stock: { width: '7em' },
+    widthFormGroup: { display: 'inline-block' },
+    heightFormGroup: { display: 'inline-block', marginLeft: 32 },
 };
 
-
-export const ConditionUserCreate = (props) => {
+export const ConditionUserCreate = props => {
     return (
         <Create title="Создание" {...props}>
-            <SimpleForm initialValues={{conditionType: CONDITION_TYPE_USER}}>
+            <SimpleForm initialValues={{ conditionType: CONDITION_TYPE_USER }}>
                 <TextInput
                     autoFocus
                     source="name"
@@ -25,7 +30,8 @@ export const ConditionUserCreate = (props) => {
                 />
                 <TextInput
                     label="Валюта "
-                    multiline source="currencies"
+                    multiline
+                    source="currencies"
                     fullWidth
                 />
                 <SelectInput
@@ -37,7 +43,6 @@ export const ConditionUserCreate = (props) => {
             </SimpleForm>
         </Create>
     );
+};
 
-}
-
-export default ConditionUserCreate
+export default ConditionUserCreate;

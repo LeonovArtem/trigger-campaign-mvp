@@ -2,71 +2,124 @@ import ruMessages from 'ra-language-russian';
 
 export default {
     ...ruMessages,
-    app: {
-        search: 'Search',
-        configuration: 'Configuration',
-        language: 'Language',
+    pos: {
+        search: 'Поиск',
+        configuration: 'Конфигурация',
+        language: 'Язык',
         theme: {
-            name: 'Theme',
-            light: 'Light',
-            dark: 'Dark',
+            name: 'Тема',
+            light: 'Светлая',
+            dark: 'Темная',
         },
         menu: {
             campaign: 'Кампании',
             conditions: 'Условия',
-            couponConditions: 'На купон',
-            refillConditions: 'На депозит',
-            userConditions: 'На регистрацию',
         },
+    },
+    common: {
+        fields: {
+            emptyText: 'Любой',
+        },
+        edit: 'Редактирование'
     },
     resources: {
-        campaign: {
-            name: "Кампании",
-            fields: {
-                name: 'Имя',
-                description: 'Описание',
-                createdAt: 'Дата создания',
-                startAt: 'Дата начала публикации',
-                endAt: 'Дата окончания публикации',
-                isPublished: 'Опубликована'
-            }
-        },
-        conditions: {
-            name: 'Условия',
+        condition: {
+            id: 'ID',
+            name: 'Название',
+            type: 'Тип',
         },
         conditionCoupon: {
+            name: 'На купон',
+            create: 'Создать услвоие на купон',
+            tabs: {
+                params: 'Параметры',
+                limits: 'Минимальные лимиты',
+            },
             fields: {
-                name: 'Имя'
-            }
+                name: 'Наименование',
+                couponStatus: 'Статус купона',
+                couponType: 'Тип купона',
+                express: {
+                    title: 'Параметры купона с типом "Экспресс"',
+                    minCountBet: 'Минимальное количество ставок',
+                    countLoseBet: 'Количество проигрышных ставок',
+                    countWinBet: 'Минимальное количество выигрышных ставок',
+                    minCoefficientBet: 'Минимальный коэффициент ставки',
+                },
+                couponMinCoefficient: 'Минимальный коэффициент купона',
+                couponLineType: 'Тип линии',
+                limitPerDay: 'Не более одного купона в день',
+                couponIsFirst: 'Первая ставка на спорт',
+                limits: {
+                    title: 'Лимиты по валютам',
+                    currency: 'Валюта',
+                    minAmount: 'Минимальная сумма',
+                    minSumAmount: 'Оборот',
+                },
+            },
         },
-        customers: {
-            name: 'Customer |||| Customers',
+        conditionRefill: {
+            name: 'На депозит',
+        },
+        conditionUser: {
+            name: 'На регистрацию',
+        },
+        categories: {
+            name: 'Category |||| Categories',
             fields: {
-                commands: 'Orders',
-                first_seen: 'First seen',
-                groups: 'Segments',
-                last_seen: 'Last seen',
-                last_seen_gte: 'Visited Since',
-                name: 'Name',
-                total_spent: 'Total spent',
-                password: 'Password',
-                confirm_password: 'Confirm password',
+                products: 'Products',
             },
-            fieldGroups: {
-                identity: 'Identity',
-                address: 'Address',
-                stats: 'Stats',
-                history: 'History',
-                password: 'Password',
-                change_password: 'Change Password',
+        },
+        campaign: {
+            name: 'Кампании |||| Кампании',
+            conditions: 'Условия',
+            showConditionParams: 'Параметры',
+            tabs: {
+                params: 'Параметры',
+                userParams: 'Параметры пользователя',
+                conditions: 'Условия',
+                abTest: 'AB-тест',
+                emailSegments: 'Emarsys',
+                landings: 'Лендинги',
             },
-            page: {
-                delete: 'Delete Customer',
+            fields: {
+                name: 'Наименование',
+                description: 'Описание',
+                maxFulfillmentCount: 'Количество отработок по триггеру',
+                clientPlatforms: 'Платформы для срабатывания триггера',
+                startAt: 'Дата начала публикации',
+                endAt: 'Дата окончания публикации',
+                createdAt: 'Дата создания',
+                isPublished: 'Опубликовать',
+                userAvailability: 'Доступность пользователям',
+                usersFile: 'Список пользователей',
+                isConfirmationParticipation: 'Подтверждение участия',
+                conditions: {
+                    coupon: 'На купон',
+                    refill: 'На депозит',
+                    user: 'На регистрацию',
+                }
             },
-            errors: {
-                password_mismatch:
-                    'The password confirmation is not the same as the password.',
+            show: {
+                isPublished: 'Опубликована',
+            },
+            filters: {
+                id: 'ID',
+                isPublished: 'Опубликована',
+            },
+            hints: {
+                fileInput: 'Перетащите файл для загрузки или щелкните, чтобы выбрать его.',
+            },
+            action: {
+                accept: 'Accept',
+                reject: 'Reject',
+            },
+            notification: {
+                approved_success: 'Review approved',
+                approved_error: 'Error: Review not approved',
+                rejected_success: 'Review rejected',
+                rejected_error: 'Error: Review not rejected',
             },
         },
     },
-};
+}

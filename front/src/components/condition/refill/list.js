@@ -1,18 +1,18 @@
-import {Datagrid, Filter, List, TextField, TextInput} from 'react-admin';
+import { Datagrid, Filter, List, TextField, TextInput } from 'react-admin';
 
-const PostFilter = (props) => (
+const PostFilter = props => (
     <Filter {...props}>
-        <TextInput label='Поиск' source='q' alwaysOn/>
+        <TextInput label="Поиск" source="q" alwaysOn />
     </Filter>
 );
 
-export const ConditionRefillList = (props) => (
-    <List filters={<PostFilter/>} {...props}>
+export const ConditionRefillList = props => (
+    <List filters={<PostFilter />} {...props}>
         <Datagrid>
-            <TextField label="Наименование" source="name"/>
-            <TextField label="Описание" source="description"/>
+            <TextField label="Наименование" source="name" />
+            <TextField label="Описание" source="description" />
         </Datagrid>
     </List>
-)
+);
 
-export default ConditionRefillList
+export default ConditionRefillList;

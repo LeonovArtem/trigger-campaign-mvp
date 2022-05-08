@@ -8,10 +8,6 @@ import org.mapstruct.ReportingPolicy;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface ConditionMapper {
-    default void updateConditionFromDto(ConditionDto<ConditionDto.Params> dto, @MappingTarget Condition condition) {
-
-    }
-
     default Condition dtoToCondition(ConditionDto<ConditionDto.Params> conditionDto) {
         if (conditionDto == null) {
             return null;

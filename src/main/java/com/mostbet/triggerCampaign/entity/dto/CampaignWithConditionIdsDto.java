@@ -1,17 +1,17 @@
 package com.mostbet.triggerCampaign.entity.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mostbet.triggerCampaign.entity.TriggerCampaign;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CampaignWithConditionIdsDto {
     private Integer id;
 
@@ -31,20 +31,21 @@ public class CampaignWithConditionIdsDto {
 
     private TriggerCampaign.UserAvailability userAvailability;
 
-    private ConditionsIds conditionsIds;
+    private ConditionsIds conditionIds;
 
-    public List<Integer> getAllConditionIds(){
-        return Stream.of(conditionsIds.coupons, conditionsIds.refills, conditionsIds.users)
-                .flatMap(Collection::stream)
+    public List<Integer> getConditionIds() {
+        return Stream.of(
+                        conditionIds.getConditionCouponId(),
+                        conditionIds.getConditionRefillId(),
+                        conditionIds.getConditionUserId()
+                )
                 .collect(Collectors.toList());
     }
 
     @Data
     private static class ConditionsIds {
-        List<Integer> coupons = new ArrayList<>();
-
-        List<Integer> refills= new ArrayList<>();
-
-        List<Integer> users = new ArrayList<>();
+        Integer conditionCouponId;
+        Integer conditionRefillId;
+        Integer conditionUserId;
     }
 }
