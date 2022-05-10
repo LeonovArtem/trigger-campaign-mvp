@@ -24,8 +24,16 @@ const CampaignFilters = props => (
 );
 
 export const CampaignList = props => (
-    <List filters={<CampaignFilters />} {...props}>
-        <Datagrid expand={<TriggerCampaignCreateShow />} rowStyle={rowStyle}>
+    <List
+        sort={{ field: 'id', order: 'DESC' }}
+        filters={<CampaignFilters />}
+        {...props}
+    >
+        <Datagrid
+            optimized
+            expand={<TriggerCampaignCreateShow />}
+            rowStyle={rowStyle}
+        >
             <TextField source="id" />
             <TextField source="name" />
             <TextField source="description" />

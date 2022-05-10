@@ -28,7 +28,7 @@ import {
 } from '../constants';
 import { ACTION_EDIT } from '../../../../constants/appConstants';
 
-export const ConditionCouponForm = ({ action }) => {
+const ConditionCouponForm = ({ action }) => {
     const translate = useTranslate();
     return (
         <div>
@@ -51,7 +51,7 @@ export const ConditionCouponForm = ({ action }) => {
                         label="resources.conditionCoupon.fields.couponStatus"
                         source="params.couponStatus"
                         choices={couponStatuses}
-                        defaultValue={null}
+                        defaultValue={''}
                         emptyValue={null}
                         emptyText={'common.fields.emptyText'}
                         className="inputForm"
@@ -62,7 +62,7 @@ export const ConditionCouponForm = ({ action }) => {
                         label="resources.conditionCoupon.fields.couponType"
                         source="params.couponType"
                         choices={couponTypes}
-                        defaultValue={null}
+                        defaultValue={''}
                         emptyValue={null}
                         emptyText={'common.fields.emptyText'}
                         className="inputForm"
@@ -146,7 +146,7 @@ export const ConditionCouponForm = ({ action }) => {
                         label="resources.conditionCoupon.fields.couponLineType"
                         source="params.couponLineType"
                         choices={couponLineTypes}
-                        defaultValue={null}
+                        defaultValue={''}
                         emptyValue={null}
                         emptyText={'Любой'}
                         className="inputForm"
