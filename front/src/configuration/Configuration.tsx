@@ -13,7 +13,7 @@ const Configuration = () => {
     const [theme, setTheme] = useTheme();
 
     return (
-        <Card sx={{marginTop: 1}}>
+        <Card sx={{ marginTop: 1 }}>
             <Title title={translate('pos.configuration')} />
             <CardContent>
                 <Box sx={{ width: '10em', display: 'inline-block' }}>

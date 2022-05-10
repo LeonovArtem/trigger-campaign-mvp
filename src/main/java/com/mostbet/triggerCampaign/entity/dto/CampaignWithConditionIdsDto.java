@@ -7,6 +7,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -30,6 +31,10 @@ public class CampaignWithConditionIdsDto {
     private Integer maxFulfillmentCount;
 
     private TriggerCampaign.UserAvailability userAvailability;
+
+    private Boolean isConfirmationParticipation;
+
+    private Set<TriggerCampaign.ClientPlatforms> clientPlatforms;
 
     private ConditionsIds conditionIds;
 

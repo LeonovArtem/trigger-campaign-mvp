@@ -1,15 +1,17 @@
 import * as React from 'react';
-import {useState} from 'react';
+import { useState } from 'react';
 import IconImageEye from '@mui/icons-material/Visibility';
 import IconKeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import {SimpleShowLayout, useGetOne, useTranslate} from 'react-admin';
+import { SimpleShowLayout, useGetOne, useTranslate } from 'react-admin';
 
-import {Button, Drawer,} from '@mui/material';
-import ConditionCouponShowForm from "../../condition/coupon/show/ConditionCouponShowForm";
+import { Button, Drawer } from '@mui/material';
+import ConditionCouponShowForm from '../../condition/coupon/show/ConditionCouponShowForm';
 
-export const ConditionParamPreview = ({conditionId}) => {
+const ConditionParamPreview = ({ conditionId }) => {
     const translate = useTranslate();
-    const {data, isLoading, error} = useGetOne('condition-coupon', {id: conditionId});
+    const { data, isLoading, error } = useGetOne('condition-coupon', {
+        id: conditionId,
+    });
     const [showPanel, setShowPanel] = useState(false);
 
     if (isLoading) {
@@ -29,18 +31,18 @@ export const ConditionParamPreview = ({conditionId}) => {
 
     return (
         <div>
-            <Button onClick={handleClick} startIcon={<IconImageEye/>}>
-                 {translate('resources.campaign.showConditionParams')}
+            <Button onClick={handleClick} startIcon={<IconImageEye />}>
+                {translate('resources.campaign.showConditionParams')}
             </Button>
             <Drawer anchor="right" open={showPanel} onClose={handleCloseClick}>
                 <div>
                     <Button label="Close" onClick={handleCloseClick}>
-                        <IconKeyboardArrowRight/>
+                        <IconKeyboardArrowRight />
                         {translate('resources.campaign.showConditionParams')}
                     </Button>
                 </div>
-                <SimpleShowLayout sx={{lineHeight: 1.5}}>
-                    <ConditionCouponShowForm condition={data}/>
+                <SimpleShowLayout sx={{ lineHeight: 1.5 }}>
+                    <ConditionCouponShowForm condition={data} />
                 </SimpleShowLayout>
             </Drawer>
         </div>

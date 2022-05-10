@@ -20,7 +20,7 @@ export default {
         fields: {
             emptyText: 'Любой',
         },
-        edit: 'Редактирование'
+        edit: 'Редактирование',
     },
     resources: {
         condition: {
@@ -98,7 +98,7 @@ export default {
                     coupon: 'На купон',
                     refill: 'На депозит',
                     user: 'На регистрацию',
-                }
+                },
             },
             show: {
                 isPublished: 'Опубликована',
@@ -108,7 +108,8 @@ export default {
                 isPublished: 'Опубликована',
             },
             hints: {
-                fileInput: 'Перетащите файл для загрузки или щелкните, чтобы выбрать его.',
+                fileInput:
+                    'Перетащите файл для загрузки или щелкните, чтобы выбрать его.',
             },
             action: {
                 accept: 'Accept',
@@ -122,4 +123,4 @@ export default {
             },
         },
     },
-}
+};

@@ -19,6 +19,8 @@ create table trigger_campaign
     user_availability     varchar(255) not null,
     start_at              timestamp  not null,
     end_at                timestamp  not null,
+    client_platforms      json,
+    is_confirmation_participation BOOLEAN not null,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp
 ) engine = InnoDB;

@@ -9,7 +9,7 @@ import {
     Typography,
 } from '@mui/material';
 
-const CouponLimitsShow = ({ limits }) => {
+const ConditionCouponLimitsShow = ({ limits }) => {
     if (!limits) return null;
     return (
         <div>
@@ -38,4 +38,4 @@ const CouponLimitsShow = ({ limits }) => {
     );
 };
 
-export default CouponLimitsShow;
+export default ConditionCouponLimitsShow;

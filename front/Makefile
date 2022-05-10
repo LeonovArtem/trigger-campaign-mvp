@@ -10,12 +10,12 @@ install: ../front/package.json ## install dependencies
 		yarn --frozen-lockfile; \
 	fi
 
-run-demo: ## run the ecommerce example
-	@yarn run-demo
+run: ## run dev
+	@yarn run
 
 
-build-demo: ## compile the ecommerce example to static js
-	@yarn build-demo
+build-demo: ## compile App to static js
+	@yarn build
 
 
 lint: ## lint the code and check coding conventions

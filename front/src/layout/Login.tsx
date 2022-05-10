@@ -67,8 +67,7 @@ const Login = () => {
                     minHeight: '100vh',
                     alignItems: 'center',
                     justifyContent: 'flex-start',
-                    backgroundColor: '#e8f0fe'
-
+                    backgroundColor: '#e8f0fe',
                 }}
             >
                 <Card sx={{ minWidth: 300, marginTop: '6em' }}>

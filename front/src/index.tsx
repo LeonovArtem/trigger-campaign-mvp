@@ -1,7 +1,6 @@
 /** @jsxRuntime classic */
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
-import 'proxy-polyfill';
 import './index.css';
 
 import * as React from 'react';
@@ -15,4 +14,3 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById('root')
 );
-

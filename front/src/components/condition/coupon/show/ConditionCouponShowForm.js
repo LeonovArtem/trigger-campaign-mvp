@@ -1,19 +1,19 @@
-import {Divider, Grid, Typography} from "@mui/material";
-import CouponLimitsShow from "../limits";
-import React from "react";
-import {useTranslate} from "react-admin";
+import { Divider, Grid, Typography } from '@mui/material';
+import ConditionCouponLimitsShow from './ConditionCouponLimitsShow';
+import React from 'react';
+import { useTranslate } from 'react-admin';
 
-const ShowRow = ({label, row}) => {
+const ShowRow = ({ label, row }) => {
     const translate = useTranslate();
     return (
         <div>
-            <span className='showRowTitle'>{translate(label)}</span>
-            <span className='showRowParam'>{row}</span>
+            <span className="showRowTitle">{translate(label)}</span>
+            <span className="showRowParam">{row}</span>
         </div>
     );
 };
 
-const ConditionCouponShowForm = ({condition}) => {
+const ConditionCouponShowForm = ({ condition }) => {
     return (
         <div>
             <Grid container spacing={2}>
@@ -30,34 +30,36 @@ const ConditionCouponShowForm = ({condition}) => {
             </Grid>
             <Divider
                 sx={{
-                    marginBottom: '5px'
+                    marginBottom: '5px',
                 }}
             />
 
-            {condition.params.couponMinCoefficient &&
+            {condition.params.couponMinCoefficient && (
                 <ShowRow
-                    label={'resources.conditionCoupon.fields.couponMinCoefficient'}
+                    label={
+                        'resources.conditionCoupon.fields.couponMinCoefficient'
+                    }
                     row={condition.params.couponMinCoefficient}
                 />
-            }
+            )}
 
-            {condition.params.couponStatus &&
+            {condition.params.couponStatus && (
                 <ShowRow
                     label={'resources.conditionCoupon.fields.couponStatus'}
                     row={condition.params.couponStatus}
                 />
-            }
+            )}
 
-            {condition.params.couponType &&
+            {condition.params.couponType && (
                 <ShowRow
                     label={'resources.conditionCoupon.fields.couponType'}
                     row={condition.params.couponType}
                 />
-            }
+            )}
 
-            <CouponLimitsShow limits={condition.params.limits}/>
+            <ConditionCouponLimitsShow limits={condition.params.limits} />
         </div>
     );
-}
+};
 
 export default ConditionCouponShowForm;

@@ -1,6 +1,6 @@
-import ConditionCouponList from './list';
-import ConditionCouponEdit from './edit';
-import ConditionCouponCreate from './create';
+import ConditionCouponList from './ConditionCouponList';
+import ConditionCouponEdit from './ConditionCouponEdit';
+import ConditionCouponCreate from './ConditionCouponCreate';
 import ConditionCouponShow from './show/Show';
 
 export default {

@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -55,8 +55,15 @@ public class TriggerCampaign {
     public Integer maxFulfillmentCount;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "user_availability", nullable = false)
     private UserAvailability userAvailability;
+
+    @Type(type = "json")
+    @Column(name = "client_platforms",  columnDefinition = "json")
+    private Set<ClientPlatforms> clientPlatforms;
+
+    @Column(name = "is_confirmation_participation", columnDefinition = "BOOLEAN", nullable = false)
+    private Boolean isConfirmationParticipation;
 
     @Fetch(FetchMode.JOIN)
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -83,6 +90,12 @@ public class TriggerCampaign {
 
     public enum UserAvailability {
         ALL,
-        NEW
+        NEW,
+    }
+
+    public enum ClientPlatforms {
+        MOBILE_APP,
+        WEB_DESKTOP,
+        WEB_MOBILE,
     }
 }

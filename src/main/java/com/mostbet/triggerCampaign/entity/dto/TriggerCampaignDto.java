@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -35,6 +36,10 @@ public class TriggerCampaignDto implements Serializable {
     private Integer maxFulfillmentCount;
 
     private TriggerCampaign.UserAvailability userAvailability;
+
+    private Boolean isConfirmationParticipation;
+
+    private Set<TriggerCampaign.ClientPlatforms> clientPlatforms;
 
     private List<ConditionDto<ConditionDto.Params>> conditions;
 }

@@ -7,8 +7,7 @@ const Logo = () => {
             style={{
                 lineHeight: 1.25,
             }}
-        >
-        </div>
+        ></div>
     );
 };
 

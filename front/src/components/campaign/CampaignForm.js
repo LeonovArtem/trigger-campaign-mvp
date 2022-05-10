@@ -1,4 +1,4 @@
-import {CLIENT_PLATFORMS, USER_AVAILABILITY} from './constants';
+import { CLIENT_PLATFORMS, USER_AVAILABILITY } from './constants';
 import {
     BooleanInput,
     DateTimeInput,
@@ -12,25 +12,28 @@ import {
     TabbedForm,
     TextInput,
     useTranslate,
-    AutocompleteInput
+    AutocompleteInput,
+    SelectArrayInput,
 } from 'react-admin';
-import {ACTION_CREATE, ACTION_EDIT} from "../../constants/appConstants";
-import React from "react";
+import { ACTION_CREATE, ACTION_EDIT } from '../../constants/appConstants';
+import React from 'react';
 
 const conditionRenderer = condition => {
     if (!condition) return;
     return '[id:' + condition.id + '] ' + condition.name;
 };
 
-export const CampaignForm = ({action}) => {
+export const CampaignForm = ({ action }) => {
     const translate = useTranslate();
     return (
         <>
             <TabbedForm>
-                <FormTab label='resources.campaign.tabs.params'>
-                    {action === ACTION_EDIT && (<TextInput source='id' disabled/>)}
+                <FormTab label="resources.campaign.tabs.params">
+                    {action === ACTION_EDIT && (
+                        <TextInput source="id" disabled />
+                    )}
                     <TextInput
-                        source='name'
+                        source="name"
                         autoFocus
                         validate={required()}
                         disabled={action === ACTION_EDIT}
@@ -38,33 +41,32 @@ export const CampaignForm = ({action}) => {
                     />
                     <TextInput
                         multiline
-                        source='description'
+                        source="description"
                         disabled={action === ACTION_EDIT}
                         fullWidth
                     />
                     <NumberInput
-                        source='maxFulfillmentCount'
-                        className='inputForm'
+                        source="maxFulfillmentCount"
+                        className="inputForm"
                         disabled={action === ACTION_EDIT}
                     />
-                    <SelectInput
-                        source='clientPlatforms'
+                    <SelectArrayInput
+                        source="clientPlatforms"
                         choices={CLIENT_PLATFORMS}
-                        className='inputForm'
-                        resettable
+                        className="inputForm"
+                        resettable="true"
                     />
                     <div>
                         <DateTimeInput
-                            source='startAt'
+                            source="startAt"
                             validate={required()}
                             sx={{
                                 display: 'inline-block',
                                 width: '19em',
                             }}
-
                         />
                         <DateTimeInput
-                            source='endAt'
+                            source="endAt"
                             validate={required()}
                             sx={{
                                 display: 'inline-block',
@@ -73,86 +75,89 @@ export const CampaignForm = ({action}) => {
                             }}
                         />
                     </div>
-                    <BooleanInput source='isPublished'/>
+                    <BooleanInput source="isPublished" />
                 </FormTab>
                 {action === ACTION_CREATE && (
-                    <FormTab label='resources.campaign.tabs.userParams'>
+                    <FormTab label="resources.campaign.tabs.userParams">
                         <SelectInput
                             validate={required()}
-                            source='userAvailability'
+                            source="userAvailability"
                             choices={USER_AVAILABILITY}
-                            className='inputForm'
+                            className="inputForm"
                             resettable
                         />
                         <FileInput
-                            source='usersFile'
-                            accept='application/csv'
+                            source="usersFile"
+                            accept="application/csv"
                             placeholder={
-                                <p>{translate('resources.campaign.hints.fileInput')}</p>
-                            }>
-                            <FileField source="src" title="title"/>
+                                <p>
+                                    {translate(
+                                        'resources.campaign.hints.fileInput'
+                                    )}
+                                </p>
+                            }
+                        >
+                            <FileField source="src" title="title" />
                         </FileInput>
-                        <BooleanInput
-                            source='isConfirmationParticipation'
-                        />
+                        <BooleanInput source="isConfirmationParticipation" />
                     </FormTab>
                 )}
 
                 {action === ACTION_CREATE && (
-                    <FormTab label='resources.campaign.tabs.conditions'>
+                    <FormTab label="resources.campaign.tabs.conditions">
                         <ReferenceInput
-                            source='conditionIds.coupon'
+                            source="conditionIds.conditionCouponId"
                             reference="condition-coupon"
                             perPage={5}
                         >
                             <AutocompleteInput
-                                label='resources.campaign.fields.conditions.coupon'
+                                label="resources.campaign.fields.conditions.coupon"
                                 optionText={conditionRenderer}
                                 defaultValue={''}
                                 emptyValue={null}
-                                className='inputForm'
+                                className="inputForm"
                             />
                         </ReferenceInput>
 
                         <ReferenceInput
-                            source='conditionIds.refill'
-                            reference='condition-refill'
+                            source="conditionIds.conditionRefillId"
+                            reference="condition-refill"
                             perPage={5}
                         >
                             <AutocompleteInput
-                                label='resources.campaign.fields.conditions.refill'
+                                label="resources.campaign.fields.conditions.refill"
                                 optionText={conditionRenderer}
                                 defaultValue={''}
                                 emptyValue={null}
-                                className='inputForm'
+                                className="inputForm"
                             />
                         </ReferenceInput>
 
                         <ReferenceInput
-                            source='conditionIds.user'
-                            reference='condition-user'
+                            source="conditionIds.conditionUserId"
+                            reference="condition-user"
                             perPage={5}
                         >
                             <AutocompleteInput
-                                label='resources.campaign.fields.conditions.user'
+                                label="resources.campaign.fields.conditions.user"
                                 optionText={conditionRenderer}
                                 defaultValue={''}
                                 emptyValue={null}
-                                className='inputForm'
+                                className="inputForm"
                             />
                         </ReferenceInput>
                     </FormTab>
                 )}
 
                 {action === ACTION_CREATE && (
-                    <FormTab label='resources.campaign.tabs.abTest'></FormTab>
+                    <FormTab label="resources.campaign.tabs.abTest"></FormTab>
                 )}
 
                 {action === ACTION_CREATE && (
-                    <FormTab label='resources.campaign.tabs.emailSegments'></FormTab>
+                    <FormTab label="resources.campaign.tabs.emailSegments"></FormTab>
                 )}
 
-                <FormTab label='resources.campaign.tabs.landings'></FormTab>
+                <FormTab label="resources.campaign.tabs.landings"></FormTab>
             </TabbedForm>
         </>
     );
