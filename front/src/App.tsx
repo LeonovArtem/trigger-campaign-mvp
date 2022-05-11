@@ -3,7 +3,7 @@ import { Admin, CustomRoutes, Resource } from 'react-admin';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import { Route } from 'react-router';
 import jsonServerProvider from 'ra-data-json-server';
-
+import { QueryClient } from 'react-query';
 import authProvider from './authProvider';
 import { Login, Layout } from './layout';
 import englishMessages from './i18n/en';
@@ -29,16 +29,25 @@ const App = () => {
     const restProvider = jsonServerProvider(
         process.env.REACT_APP_DATA_PROVIDER
     );
+    let appCacheInMinutes = 2;
+    const queryClient = new QueryClient({
+        defaultOptions: {
+            queries: {
+                staleTime: appCacheInMinutes * 60 * 1000, // Set Application Query Cache
+            },
+        },
+    });
+
     return (
         <Admin
             title=""
             dataProvider={restProvider}
             authProvider={authProvider}
-            // dashboard={Dashboard}
             loginPage={Login}
             layout={Layout}
             i18nProvider={i18nProvider}
             disableTelemetry
+            queryClient={queryClient}
             theme={lightTheme}
         >
             <Resource name="campaign" {...campaigns} />
