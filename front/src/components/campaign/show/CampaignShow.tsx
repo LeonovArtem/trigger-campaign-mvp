@@ -1,3 +1,4 @@
+import React from 'react';
 import {
     BooleanField,
     SelectField,
@@ -12,11 +13,11 @@ import {
     Grid,
     Typography,
 } from '@mui/material';
-import React from 'react';
 import CustomRow from '../../CustomRow';
 import ShowCampaignConditions from '../conditions/ShowCampaignConditions';
 import { USER_AVAILABILITY } from '../constants';
 import ClientPlatformsShow from './ClientPlatformsShow';
+import CustomDateField from './CustomDateField';
 
 const CampaignShow = (props: any) => {
     const { record } = useShowController(props);
@@ -61,7 +62,7 @@ const CampaignShow = (props: any) => {
                             {translate('resources.campaign.fields.startAt')}
                         </Typography>
                         <Typography gutterBottom align="center">
-                            {new Date(record.startAt).toLocaleDateString()}
+                            <CustomDateField record={record} source="startAt" />
                         </Typography>
                     </Grid>
 
@@ -70,7 +71,7 @@ const CampaignShow = (props: any) => {
                             {translate('resources.campaign.fields.endAt')}
                         </Typography>
                         <Typography gutterBottom align="center">
-                            {new Date(record.endAt).toLocaleDateString()}
+                            <CustomDateField record={record} source="endAt" />
                         </Typography>
                     </Grid>
                 </Grid>

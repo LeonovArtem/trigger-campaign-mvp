@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -25,11 +26,10 @@ public class TriggerCampaignDto implements Serializable {
     private LocalDateTime createdAt;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private LocalDateTime startAt;
+    private Date startAt;
 
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.Y HH:mm:ss")
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private LocalDateTime endAt;
+    private Date endAt;
 
     private Boolean isPublished;
 

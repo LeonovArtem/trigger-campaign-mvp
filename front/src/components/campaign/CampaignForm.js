@@ -1,5 +1,6 @@
 import { CLIENT_PLATFORMS, USER_AVAILABILITY } from './constants';
 import {
+    AutocompleteInput,
     BooleanInput,
     DateTimeInput,
     FileField,
@@ -8,12 +9,11 @@ import {
     NumberInput,
     ReferenceInput,
     required,
+    SelectArrayInput,
     SelectInput,
     TabbedForm,
     TextInput,
     useTranslate,
-    AutocompleteInput,
-    SelectArrayInput,
 } from 'react-admin';
 import { ACTION_CREATE, ACTION_EDIT } from '../../constants/appConstants';
 import React from 'react';
@@ -59,6 +59,7 @@ export const CampaignForm = ({ action }) => {
                     <div>
                         <DateTimeInput
                             source="startAt"
+                            variant="outlined"
                             validate={required()}
                             sx={{
                                 display: 'inline-block',
@@ -67,6 +68,7 @@ export const CampaignForm = ({ action }) => {
                         />
                         <DateTimeInput
                             source="endAt"
+                            variant="outlined"
                             validate={required()}
                             sx={{
                                 display: 'inline-block',

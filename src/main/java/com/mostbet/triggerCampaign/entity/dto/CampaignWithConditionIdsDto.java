@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mostbet.triggerCampaign.entity.TriggerCampaign;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -21,10 +21,10 @@ public class CampaignWithConditionIdsDto {
     private String description;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private LocalDateTime startAt;
+    private Date startAt;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private LocalDateTime endAt;
+    private Date endAt;
 
     private Boolean isPublished;
 

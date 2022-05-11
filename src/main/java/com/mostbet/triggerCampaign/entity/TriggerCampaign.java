@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -32,11 +33,11 @@ public class TriggerCampaign {
 
     @Column(name = "start_at", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private LocalDateTime startAt;
+    private Date startAt;
 
     @Column(name = "end_at", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private LocalDateTime endAt;
+    private Date endAt;
 
     @Column(name = "created_at", updatable = false, nullable = false)
     @Generated(GenerationTime.INSERT)
