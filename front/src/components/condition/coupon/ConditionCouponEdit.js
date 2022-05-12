@@ -1,6 +1,6 @@
 import React from 'react';
 import { Edit } from 'react-admin';
-import ConditionCouponForm from './show/ConditionCouponForm';
+import ConditionCouponForm from './ConditionCouponForm';
 import { ACTION_EDIT } from '../../../constants/appConstants';
 
 export const ConditionCouponEdit = props => (

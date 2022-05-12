@@ -1,7 +1,7 @@
 import { Divider, Grid, Typography } from '@mui/material';
 import ConditionCouponLimitsShow from './ConditionCouponLimitsShow';
 import React from 'react';
-import { useTranslate } from 'react-admin';
+import { BooleanField, useTranslate } from 'react-admin';
 
 const ShowRow = ({ label, row }) => {
     const translate = useTranslate();
@@ -14,6 +14,7 @@ const ShowRow = ({ label, row }) => {
 };
 
 const ConditionCouponShowForm = ({ condition }) => {
+    const translate = useTranslate();
     return (
         <div>
             <Grid container spacing={2}>
@@ -55,6 +56,28 @@ const ConditionCouponShowForm = ({ condition }) => {
                     label={'resources.conditionCoupon.fields.couponType'}
                     row={condition.params.couponType}
                 />
+            )}
+
+            {condition.params.couponIsFirst && (
+                <div>
+                    <span className="showRowTitle">
+                        {translate(
+                            'resources.conditionCoupon.fields.couponIsFirst'
+                        )}
+                    </span>
+                    <BooleanField source="params.couponIsFirst" />
+                </div>
+            )}
+
+            {condition.params.limitPerDay && (
+                <div>
+                    <span className="showRowTitle">
+                        {translate(
+                            'resources.conditionCoupon.fields.limitPerDay'
+                        )}
+                    </span>
+                    <BooleanField source="params.limitPerDay" />
+                </div>
             )}
 
             <ConditionCouponLimitsShow limits={condition.params.limits} />

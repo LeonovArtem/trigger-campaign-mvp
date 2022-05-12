@@ -2,6 +2,7 @@ package com.mostbet.triggerCampaign.entity.mapper.conditionParams;
 
 import com.mostbet.triggerCampaign.entity.ConditionParam;
 import com.mostbet.triggerCampaign.entity.conditionParamValue.coupon.*;
+import com.mostbet.triggerCampaign.entity.conditionParamValue.fulfillment.LimitPerDayDto;
 import com.mostbet.triggerCampaign.entity.dto.ConditionCouponDto;
 import com.mostbet.triggerCampaign.entity.dto.ConditionDto;
 import com.mostbet.triggerCampaign.entity.dto.conditionParams.CouponParamsDto;
@@ -39,6 +40,18 @@ public abstract class CouponParamsMapper implements ConditionParamsMapper {
             if (conditionParam.getParamValue() instanceof CouponLineTypeDto) {
                 couponParamsDto.setLineType(
                         ((CouponLineTypeDto) conditionParam.getParamValue()).getCouponLineType()
+                );
+            }
+
+            if (conditionParam.getParamValue() instanceof CouponIsFirstDto) {
+                couponParamsDto.setCouponIsFirst(
+                        ((CouponIsFirstDto) conditionParam.getParamValue()).getValue()
+                );
+            }
+
+            if (conditionParam.getParamValue() instanceof LimitPerDayDto) {
+                couponParamsDto.setLimitPerDay(
+                        ((LimitPerDayDto) conditionParam.getParamValue()).getValue()
                 );
             }
 
@@ -96,6 +109,24 @@ public abstract class CouponParamsMapper implements ConditionParamsMapper {
                     createConditionParam(
                             ConditionParam.ConditionParamName.COUPON_LINE_TYPE,
                             new CouponLineTypeDto(couponParams.getLineType())
+                    )
+            );
+        }
+
+        if (couponParams.getCouponIsFirst() != null) {
+            conditionParamList.add(
+                    createConditionParam(
+                            ConditionParam.ConditionParamName.COUPON_IS_FIRST,
+                            new CouponIsFirstDto(couponParams.getCouponIsFirst())
+                    )
+            );
+        }
+
+        if (couponParams.getLimitPerDay() != null) {
+            conditionParamList.add(
+                    createConditionParam(
+                            ConditionParam.ConditionParamName.CONDITION_FULFILLMENT_LIMIT_PER_DAY,
+                            new LimitPerDayDto(couponParams.getLimitPerDay())
                     )
             );
         }

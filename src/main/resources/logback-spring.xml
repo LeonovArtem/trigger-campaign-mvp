@@ -9,10 +9,14 @@
             </encoder>
         </appender>
 
-        <logger name="com.devbro.api.advices.ControllerExceptionAdvice" level="DEBUG"/>
+        <logger name="org.hibernate.SQL" level="debug" additivity="false">
+            <appender-ref ref="STDOUT" />
+        </logger>
+
+        <logger name="com.mostbet.triggerCampaign.operation.event.LoggerDecorator" level="DEBUG"/>
     </springProfile>
 
-    <springProfile name="prod, stage">
+    <springProfile name="prod, stage, test">
         <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
             <encoder class="de.siegmar.logbackgelf.GelfEncoder">
                 <originHost>localhost</originHost>
@@ -29,7 +33,7 @@
                 <fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
                     <pattern>%m%n</pattern>
                 </fullPatternLayout>
-                <staticField>app_name:devbro-worker-api</staticField>
+                <staticField>app_name:trigger-campaign</staticField>
             </encoder>
         </appender>
 
@@ -44,7 +48,7 @@
             <appender-ref ref="ASYNC_STDOUT" />
         </root>
 
-        <logger name="feign.Logger" additivity="false" level="debug">
+        <logger name="feign.Logger" additivity="false" level="info">
             <appender-ref ref="ASYNC_STDOUT" />
         </logger>
 

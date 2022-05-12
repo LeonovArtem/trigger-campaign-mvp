@@ -20,7 +20,7 @@ create table trigger_campaign
     start_at              timestamp  not null,
     end_at                timestamp  not null,
     client_platforms      json,
-    is_confirmation_participation BOOLEAN not null,
+    is_confirmation_participation tinyint(1) not null default 0,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp
 ) engine = InnoDB;

@@ -1,6 +1,5 @@
 package com.mostbet.triggerCampaign.entity.dto.conditionParams;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mostbet.triggerCampaign.entity.CouponLineType;
@@ -28,6 +27,12 @@ public class CouponParamsDto implements ConditionDto.Params {
 
     @JsonProperty("couponLineType")
     private CouponLineType lineType;
+
+    @JsonProperty("couponIsFirst")
+    private Boolean couponIsFirst;
+
+    @JsonProperty("limitPerDay")
+    private Boolean limitPerDay;
 
     @JsonProperty("limits")
     private List<ConditionCouponDto.CurrencyLimitDto> limits;

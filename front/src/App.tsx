@@ -29,7 +29,7 @@ const App = () => {
     const restProvider = jsonServerProvider(
         process.env.REACT_APP_DATA_PROVIDER
     );
-    let appCacheInMinutes = 2;
+    let appCacheInMinutes = 1;
     const queryClient = new QueryClient({
         defaultOptions: {
             queries: {

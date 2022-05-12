@@ -12,7 +12,7 @@ import {
     TextInput,
     useTranslate,
 } from 'react-admin';
-import { CONDITION_TYPE_COUPON, limitsDefaultValues } from '../../constants';
+import { CONDITION_TYPE_COUPON, limitsDefaultValues } from '../constants';
 import {
     Card,
     CardContent,
@@ -25,8 +25,8 @@ import {
     couponLineTypes,
     couponStatuses,
     couponTypes,
-} from '../constants';
-import { ACTION_EDIT } from '../../../../constants/appConstants';
+} from './constants';
+import { ACTION_EDIT } from '../../../constants/appConstants';
 
 const ConditionCouponForm = ({ action }) => {
     const translate = useTranslate();
@@ -51,7 +51,7 @@ const ConditionCouponForm = ({ action }) => {
                         label="resources.conditionCoupon.fields.couponStatus"
                         source="params.couponStatus"
                         choices={couponStatuses}
-                        defaultValue={''}
+                        defaultValue={null}
                         emptyValue={null}
                         emptyText={'common.fields.emptyText'}
                         className="inputForm"
@@ -62,7 +62,7 @@ const ConditionCouponForm = ({ action }) => {
                         label="resources.conditionCoupon.fields.couponType"
                         source="params.couponType"
                         choices={couponTypes}
-                        defaultValue={''}
+                        defaultValue={null}
                         emptyValue={null}
                         emptyText={'common.fields.emptyText'}
                         className="inputForm"
@@ -146,7 +146,7 @@ const ConditionCouponForm = ({ action }) => {
                         label="resources.conditionCoupon.fields.couponLineType"
                         source="params.couponLineType"
                         choices={couponLineTypes}
-                        defaultValue={''}
+                        defaultValue={null}
                         emptyValue={null}
                         emptyText={'Любой'}
                         className="inputForm"
@@ -155,10 +155,12 @@ const ConditionCouponForm = ({ action }) => {
                     <BooleanInput
                         label="resources.conditionCoupon.fields.limitPerDay"
                         source="params.limitPerDay"
+                        defaultValue={null}
                     />
                     <BooleanInput
                         label="resources.conditionCoupon.fields.couponIsFirst"
                         source="params.couponIsFirst"
+                        defaultValue={null}
                     />
                 </FormTab>
                 <FormTab label="resources.conditionCoupon.tabs.limits">
