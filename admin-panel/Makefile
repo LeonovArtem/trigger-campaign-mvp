@@ -14,7 +14,7 @@ run: ## run dev
 	@yarn run
 
 
-build-demo: ## compile App to static js
+build: ## compile App to static js
 	@yarn build
 
 
