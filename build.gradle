@@ -22,23 +22,13 @@ plugins {
     id 'com.appland.appmap' version '1.1.0'
 }
 
-// Set up AppMap agent, default parameters
-appmap {
-    configFile = file("$projectDir/appmap.yml")
-    outputDirectory = file("$buildDir/appmap")
-    skip = false
-    debug = "info"
-    debugFile = file("$buildDir/appmap/agent.log")
-    eventValueSize = 1024
-}
-
 group = 'com.mostbet'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 def springCoreVersion = '5.3.6.RELEASE'
 def bonusApiClient = '1.1.1'
-def aspectjVersion = '1.9.5'
+def aspectjVersion = '1.9.9.1'
 def publicApiClientVersion = '1.0.20'
 def internalApiVersion = '1.0.0'
 
@@ -96,13 +86,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.springframework.integration:spring-integration-redis'
-    implementation 'org.springframework.boot:spring-boot-starter-integration'
+    implementation 'com.google.guava:guava:31.1-jre'
 
-    implementation 'com.google.guava:guava:30.1-jre'
-
-    implementation 'org.aspectj:aspectjrt:1.9.5'
+    implementation "org.aspectj:aspectjrt:${aspectjVersion}"
     aspect 'org.springframework:spring-aspects'
     implementation 'org.springframework:spring-instrument'
 

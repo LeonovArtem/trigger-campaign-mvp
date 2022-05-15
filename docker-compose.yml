@@ -20,9 +20,3 @@ services:
     ports:
       - "15674:15672"
       - "5674:5672"
-
-  redis:
-    container_name: trigger-campaign-redis
-    image: redis:3.2.5
-    ports:
-      - "6380:6379"
