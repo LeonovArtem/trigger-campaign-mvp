@@ -22,6 +22,6 @@ lint: ## lint the code and check coding conventions
 	@echo "Running linter..."
 	@yarn lint
 
-prettier: ## prettify the source code using prettier
+fixer: ## prettify the source code using prettier
 	@echo "Running prettier..."
 	@yarn prettier

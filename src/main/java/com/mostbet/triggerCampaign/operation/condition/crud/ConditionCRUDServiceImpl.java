@@ -13,6 +13,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ConditionCRUDServiceImpl implements ConditionCRUDService {
@@ -26,8 +28,8 @@ public class ConditionCRUDServiceImpl implements ConditionCRUDService {
     }
 
     @Override
-    public Condition getById(Integer id) {
-        return conditionRepository.getById(id);
+    public Optional<Condition> findById(Integer id) {
+        return conditionRepository.findById(id);
     }
 
     @Override

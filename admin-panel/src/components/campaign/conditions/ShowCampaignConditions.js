@@ -19,46 +19,54 @@ const ShowCampaignConditions = ({ record }) => {
         return '/condition-' + item.conditionType.toLowerCase() + '/' + item.id;
     };
 
-    return (
-        <div>
-            <Typography variant="h6" gutterBottom align="center">
-                {translate('resources.campaign.conditions')}
-            </Typography>
+    if (Array.isArray(record) && record.length !== 0) {
+        return (
+            <div>
+                <Typography variant="h6" gutterBottom align="center">
+                    {translate('resources.campaign.conditions')}
+                </Typography>
 
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>
-                            {translate('resources.condition.id')}
-                        </TableCell>
-                        <TableCell>
-                            {translate('resources.condition.name')}
-                        </TableCell>
-                        <TableCellRight>
-                            {translate('resources.condition.type')}
-                        </TableCellRight>
-                        <TableCellRight></TableCellRight>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {record.map(item => (
-                        <TableRow key={item.id}>
-                            <TableCell>{item.id}</TableCell>
+                <Table>
+                    <TableHead>
+                        <TableRow>
                             <TableCell>
-                                <Link to={resolveLink(item)}>{item.name}</Link>
+                                {translate('resources.condition.id')}
+                            </TableCell>
+                            <TableCell>
+                                {translate('resources.condition.name')}
                             </TableCell>
                             <TableCellRight>
-                                {item.conditionType}
+                                {translate('resources.condition.type')}
                             </TableCellRight>
-                            <TableCellRight>
-                                <ConditionParamPreview conditionId={item.id} />
-                            </TableCellRight>
+                            <TableCellRight></TableCellRight>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </div>
-    );
+                    </TableHead>
+                    <TableBody>
+                        {record.map(item => (
+                            <TableRow key={item.id}>
+                                <TableCell>{item.id}</TableCell>
+                                <TableCell>
+                                    <Link to={resolveLink(item)}>
+                                        {item.name}
+                                    </Link>
+                                </TableCell>
+                                <TableCellRight>
+                                    {item.conditionType}
+                                </TableCellRight>
+                                <TableCellRight>
+                                    <ConditionParamPreview
+                                        conditionId={item.id}
+                                    />
+                                </TableCellRight>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </div>
+        );
+    }
+
+    return <></>;
 };
 
 export default ShowCampaignConditions;

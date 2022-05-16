@@ -16,9 +16,5 @@ build:
 run_spring: clean
 	./gradlew bootRun
 
-rebuild_front:
-	echo "App started: \n"
-	cd front; rm -r node_modules; yarn; yarn start;
-
 run_front:
-	cd front; yarn start;
+	cd admin-panel; yarn start;

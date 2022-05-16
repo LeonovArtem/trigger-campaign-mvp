@@ -51,8 +51,6 @@ const ConditionCouponForm = ({ action }) => {
                         label="resources.conditionCoupon.fields.couponStatus"
                         source="params.couponStatus"
                         choices={couponStatuses}
-                        defaultValue={null}
-                        emptyValue={null}
                         emptyText={'common.fields.emptyText'}
                         className="inputForm"
                         resettable
@@ -62,8 +60,6 @@ const ConditionCouponForm = ({ action }) => {
                         label="resources.conditionCoupon.fields.couponType"
                         source="params.couponType"
                         choices={couponTypes}
-                        defaultValue={null}
-                        emptyValue={null}
                         emptyText={'common.fields.emptyText'}
                         className="inputForm"
                         resettable
@@ -146,8 +142,6 @@ const ConditionCouponForm = ({ action }) => {
                         label="resources.conditionCoupon.fields.couponLineType"
                         source="params.couponLineType"
                         choices={couponLineTypes}
-                        defaultValue={null}
-                        emptyValue={null}
                         emptyText={'Любой'}
                         className="inputForm"
                         resettable
@@ -155,12 +149,10 @@ const ConditionCouponForm = ({ action }) => {
                     <BooleanInput
                         label="resources.conditionCoupon.fields.limitPerDay"
                         source="params.limitPerDay"
-                        defaultValue={null}
                     />
                     <BooleanInput
                         label="resources.conditionCoupon.fields.couponIsFirst"
                         source="params.couponIsFirst"
-                        defaultValue={null}
                     />
                 </FormTab>
                 <FormTab label="resources.conditionCoupon.tabs.limits">

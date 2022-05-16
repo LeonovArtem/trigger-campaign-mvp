@@ -6,10 +6,12 @@ import com.mostbet.triggerCampaign.entity.dto.criteria.ConditionCriteria;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Optional;
+
 public interface ConditionCRUDService {
     Page<Condition> getAll(Pageable page, ConditionCriteria conditionCriteria);
 
-    Condition getById(Integer id);
+    Optional<Condition> findById(Integer id);
 
     Condition create(ConditionDto<ConditionDto.Params> conditionDto);
 

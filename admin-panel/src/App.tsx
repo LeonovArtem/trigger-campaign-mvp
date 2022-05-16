@@ -6,7 +6,7 @@ import jsonServerProvider from 'ra-data-json-server';
 import { QueryClient } from 'react-query';
 import authProvider from './authProvider';
 import { Login, Layout } from './layout';
-import englishMessages from './i18n/en';
+import ruMessages from './i18n/ru';
 import { lightTheme } from './layout/themes';
 
 import campaigns from './components/campaign/';
@@ -17,13 +17,13 @@ import conditionsUser from './components/condition/user';
 import Configuration from './configuration/Configuration';
 
 const i18nProvider = polyglotI18nProvider(locale => {
-    if (locale === 'ru') {
-        return import('./i18n/ru').then(messages => messages.default);
+    if (locale === 'en') {
+        return import('./i18n/en').then(messages => messages.default);
     }
 
-    // Always fallback on english
-    return englishMessages;
-}, 'en');
+    // Always fallback on russian
+    return ruMessages;
+}, 'ru');
 
 const App = () => {
     const restProvider = jsonServerProvider(
@@ -33,7 +33,7 @@ const App = () => {
     const queryClient = new QueryClient({
         defaultOptions: {
             queries: {
-                staleTime: appCacheInMinutes * 60 * 1000, // Set Application Query Cache
+                staleTime: appCacheInMinutes * 10 * 1000, // Set Application Query Cache in 10 sec
             },
         },
     });

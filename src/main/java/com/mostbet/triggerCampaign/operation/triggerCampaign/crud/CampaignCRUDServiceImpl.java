@@ -13,6 +13,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CampaignCRUDServiceImpl implements CampaignCRUDService {
@@ -26,8 +28,8 @@ public class CampaignCRUDServiceImpl implements CampaignCRUDService {
     }
 
     @Override
-    public TriggerCampaign getById(Integer id) {
-        return campaignRepository.getById(id);
+    public Optional<TriggerCampaign> findById(Integer id) {
+        return campaignRepository.findById(id);
     }
 
     public TriggerCampaign create(CampaignWithConditionIdsDto dto) {

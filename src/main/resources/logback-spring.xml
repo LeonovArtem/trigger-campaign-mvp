@@ -9,10 +9,6 @@
             </encoder>
         </appender>
 
-        <logger name="org.hibernate.SQL" level="debug" additivity="false">
-            <appender-ref ref="STDOUT" />
-        </logger>
-
         <logger name="com.mostbet.triggerCampaign.operation.event.LoggerDecorator" level="DEBUG"/>
     </springProfile>
 

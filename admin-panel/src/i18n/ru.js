@@ -21,6 +21,7 @@ export default {
             emptyText: 'Любой',
         },
         edit: 'Редактирование',
+        create: 'Создать',
     },
     resources: {
         condition: {
@@ -30,7 +31,7 @@ export default {
         },
         conditionCoupon: {
             name: 'На купон',
-            create: 'Создать услвоие на купон',
+            create: 'Создать условие на купон',
             tabs: {
                 params: 'Параметры',
                 limits: 'Минимальные лимиты',

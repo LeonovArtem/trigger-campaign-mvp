@@ -28,8 +28,9 @@ public class TriggerCampaignController {
 
     @GetMapping("{id}")
     public TriggerCampaignDto getById(@PathVariable("id") Integer campaignId) {
-        return campaignMapper
-                .triggerCampaignToTriggerCampaignDto(campaignCRUDService.getById(campaignId));
+        return campaignMapper.triggerCampaignToTriggerCampaignDto(
+                campaignCRUDService.findById(campaignId).orElseThrow()
+        );
     }
 
     @PostMapping

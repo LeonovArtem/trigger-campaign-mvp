@@ -131,19 +131,21 @@ public abstract class CouponParamsMapper implements ConditionParamsMapper {
             );
         }
 
-        couponParams.getLimits().forEach(currencyLimitDto -> {
-            if (currencyLimitDto.getMinAmount() != null) {
-                conditionParamList.add(
-                        createConditionParam(
-                                ConditionParam.ConditionParamName.COUPON_MIN_AMOUNT,
-                                new CouponMinAmountDto(
-                                        currencyLimitDto.getCurrencyCode(),
-                                        currencyLimitDto.getMinAmount()
-                                )
-                        )
-                );
-            }
-        });
+        if (couponParams.getLimits() != null) {
+            couponParams.getLimits().forEach(currencyLimitDto -> {
+                if (currencyLimitDto.getMinAmount() != null) {
+                    conditionParamList.add(
+                            createConditionParam(
+                                    ConditionParam.ConditionParamName.COUPON_MIN_AMOUNT,
+                                    new CouponMinAmountDto(
+                                            currencyLimitDto.getCurrencyCode(),
+                                            currencyLimitDto.getMinAmount()
+                                    )
+                            )
+                    );
+                }
+            });
+        }
 
         return conditionParamList;
     }

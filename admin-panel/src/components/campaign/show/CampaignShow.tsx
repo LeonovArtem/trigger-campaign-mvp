@@ -118,9 +118,7 @@ const CampaignShow = (props: any) => {
                         )}
                     />
                 )}
-                {record.conditions.length != 0 && (
-                    <ShowCampaignConditions record={record.conditions} />
-                )}
+                <ShowCampaignConditions record={record.conditions} />
             </CardContent>
         </Card>
     );

@@ -4,7 +4,7 @@ import { ACTION_CREATE } from '../../constants/appConstants';
 
 export const CampaignCreate = props => {
     return (
-        <Create title="Создать" {...props}>
+        <Create title="common.create" {...props}>
             <CampaignForm action={ACTION_CREATE} />
         </Create>
     );

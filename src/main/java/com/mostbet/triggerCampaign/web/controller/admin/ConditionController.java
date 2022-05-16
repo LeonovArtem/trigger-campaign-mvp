@@ -31,7 +31,9 @@ public abstract class ConditionController {
 
     @GetMapping("{id}")
     public ConditionDto<ConditionDto.Params> getById(@PathVariable("id") int conditionId) {
-        return mapper.conditionToDto(conditionCRUDService.getById(conditionId));
+        return mapper.conditionToDto(
+                conditionCRUDService.findById(conditionId).orElseThrow()
+        );
     }
 
     @PostMapping
