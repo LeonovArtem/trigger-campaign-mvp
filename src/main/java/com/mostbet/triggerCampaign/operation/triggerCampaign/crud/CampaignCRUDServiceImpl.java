@@ -6,6 +6,7 @@ import com.mostbet.triggerCampaign.entity.dto.criteria.TriggerCampaignCriteria;
 import com.mostbet.triggerCampaign.entity.mapper.TriggerCampaignMapper;
 import com.mostbet.triggerCampaign.operation.triggerCampaign.factory.TriggerCampaignFactory;
 import com.mostbet.triggerCampaign.repository.TriggerCampaignRepository;
+import com.mostbet.triggerCampaign.repository.specification.CampaignSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -52,10 +53,6 @@ public class CampaignCRUDServiceImpl implements CampaignCRUDService {
     }
 
     private Page<TriggerCampaign> findByParams(Pageable page, TriggerCampaignCriteria criteria) {
-        TriggerCampaign triggerCampaign = new TriggerCampaign()
-                .setIsPublished(criteria.getIsPublished())
-                .setId(criteria.getId());
-
-        return campaignRepository.findAll(Example.of(triggerCampaign), page);
+        return campaignRepository.findAll(CampaignSpecification.campaignIdOrNameOrIsPublished(criteria), page);
     }
 }

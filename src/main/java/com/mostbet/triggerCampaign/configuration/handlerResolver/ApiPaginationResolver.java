@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @Component
 public class ApiPaginationResolver implements HandlerMethodArgumentResolver {
+    private static final int DEFAULT_PAGE_SIZE = 10;
 
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
@@ -41,7 +42,7 @@ public class ApiPaginationResolver implements HandlerMethodArgumentResolver {
                 .map(String::valueOf);
 
         if (optionalOrder.isEmpty() && optionalSort.isEmpty()) {
-            return PageRequest.of(page, pageSize);
+            return PageRequest.ofSize(DEFAULT_PAGE_SIZE);
         }
 
         return PageRequest.of(
@@ -67,7 +68,7 @@ public class ApiPaginationResolver implements HandlerMethodArgumentResolver {
                 ofNullable(webRequest.getParameter("_end"))
                 .map(Integer::parseInt);
 
-        return optional.orElse(2);
+        return optional.orElse(1);
     }
 }
 

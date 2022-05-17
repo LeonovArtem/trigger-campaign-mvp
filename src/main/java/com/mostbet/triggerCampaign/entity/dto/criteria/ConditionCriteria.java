@@ -6,5 +6,6 @@ import lombok.Data;
 @Data
 public class ConditionCriteria {
     private Integer id;
+    private String name;
     private Condition.Type conditionType;
 }

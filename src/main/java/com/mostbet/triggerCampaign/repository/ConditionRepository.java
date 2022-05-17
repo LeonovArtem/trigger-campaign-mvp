@@ -1,10 +1,8 @@
 package com.mostbet.triggerCampaign.repository;
 
 import com.mostbet.triggerCampaign.entity.Condition;
-import com.mostbet.triggerCampaign.entity.TriggerCampaign;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -12,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ConditionRepository extends JpaRepository<Condition, Integer> {
+public interface ConditionRepository extends JpaRepository<Condition, Integer>, JpaSpecificationExecutor<Condition> {
 
     @Query(value = ""
             + "SELECT DISTINCT c.* "
@@ -27,6 +25,4 @@ public interface ConditionRepository extends JpaRepository<Condition, Integer> {
             nativeQuery = true
     )
     List<Condition> findActiveConditions(@Param("triggerCampaignId") int triggerCampaignId, @Param("userId") int userId);
-
-    List<Condition> findAllByType(Condition.Type type);
 }

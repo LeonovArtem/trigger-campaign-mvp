@@ -1,10 +1,8 @@
 package com.mostbet.triggerCampaign.repository;
 
 import com.mostbet.triggerCampaign.entity.TriggerCampaign;
-import com.mostbet.triggerCampaign.entity.dto.CampaignWithConditionIdsDto;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -13,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface TriggerCampaignRepository extends JpaRepository<TriggerCampaign, Integer> {
+public interface TriggerCampaignRepository extends JpaRepository<TriggerCampaign, Integer>, JpaSpecificationExecutor<TriggerCampaign> {
 
     @Query(value = ""
             + "SELECT tc.* "
@@ -27,6 +25,4 @@ public interface TriggerCampaignRepository extends JpaRepository<TriggerCampaign
             nativeQuery = true
     )
     List<TriggerCampaign> findActiveTriggerCampaignByUserId(@Param("userId") int userId, LocalDateTime now);
-
-    Page<TriggerCampaign> findById(Pageable pageable, Integer id);
 }

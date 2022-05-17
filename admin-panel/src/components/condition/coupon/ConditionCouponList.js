@@ -6,12 +6,14 @@ import {
     List,
     NumberInput,
     TextField,
+    TextInput,
 } from 'react-admin';
 import ConditionCouponShow from './show/ShowForList';
 
 const ConditionCouponFilter = props => (
     <Filter {...props}>
         <NumberInput label="Id" source="id" />
+        <TextInput label="resources.condition.name" source="name" resettable />
     </Filter>
 );
 

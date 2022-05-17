@@ -6,9 +6,10 @@ import com.mostbet.triggerCampaign.entity.dto.criteria.ConditionCriteria;
 import com.mostbet.triggerCampaign.entity.mapper.condition.ConditionFactoryMapper;
 import com.mostbet.triggerCampaign.operation.condition.factory.ConditionFactory;
 import com.mostbet.triggerCampaign.repository.ConditionRepository;
+import com.mostbet.triggerCampaign.repository.specification.ConditionSpecification;
+import com.mostbet.triggerCampaign.web.controller.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class ConditionCRUDServiceImpl implements ConditionCRUDService {
     public Condition update(ConditionDto<ConditionDto.Params> conditionDto) {
         Condition condition = conditionRepository
                 .findById(conditionDto.getId())
-                .orElseThrow();
+                .orElseThrow(NotFoundException::new);
 
         conditionMapper
                 .createByConditionType(condition.getType())
@@ -53,15 +54,14 @@ public class ConditionCRUDServiceImpl implements ConditionCRUDService {
 
     @Override
     public void deleteById(Integer id) {
-        conditionRepository.delete(conditionRepository.findById(id).orElseThrow());
+        conditionRepository.delete(
+                conditionRepository
+                        .findById(id)
+                        .orElseThrow(NotFoundException::new)
+        );
     }
 
     private Page<Condition> findByParams(Pageable page, ConditionCriteria criteria) {
-        Condition condition = new Condition()
-                .setType(criteria.getConditionType())
-                .setId(criteria.getId());
-        Example<Condition> conditionExample = Example.of(condition);
-
-        return conditionRepository.findAll(conditionExample, page);
+        return conditionRepository.findAll(ConditionSpecification.conditionIdOrConditionTypeOrName(criteria), page);
     }
 }

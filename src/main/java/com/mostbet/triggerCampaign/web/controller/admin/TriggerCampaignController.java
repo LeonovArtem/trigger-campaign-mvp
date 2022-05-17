@@ -5,7 +5,6 @@ import com.mostbet.triggerCampaign.entity.dto.TriggerCampaignDto;
 import com.mostbet.triggerCampaign.entity.dto.criteria.TriggerCampaignCriteria;
 import com.mostbet.triggerCampaign.entity.mapper.TriggerCampaignMapper;
 import com.mostbet.triggerCampaign.operation.triggerCampaign.crud.CampaignCRUDService;
-import com.mostbet.triggerCampaign.web.controller.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -46,7 +45,7 @@ public class TriggerCampaignController {
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") Integer id) throws NotFoundException {
+    public void delete(@PathVariable("id") Integer id) {
         campaignCRUDService.deleteById(id);
     }
 }

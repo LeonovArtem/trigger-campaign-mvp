@@ -4,6 +4,7 @@ import com.mostbet.triggerCampaign.entity.Condition;
 import com.mostbet.triggerCampaign.entity.dto.ConditionDto;
 import com.mostbet.triggerCampaign.entity.dto.criteria.ConditionCriteria;
 import com.mostbet.triggerCampaign.entity.mapper.condition.ConditionMapper;
+import com.mostbet.triggerCampaign.web.controller.exception.NotFoundException;
 import com.mostbet.triggerCampaign.operation.condition.crud.ConditionCRUDService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +33,9 @@ public abstract class ConditionController {
     @GetMapping("{id}")
     public ConditionDto<ConditionDto.Params> getById(@PathVariable("id") int conditionId) {
         return mapper.conditionToDto(
-                conditionCRUDService.findById(conditionId).orElseThrow()
+                conditionCRUDService
+                        .findById(conditionId)
+                        .orElseThrow(() -> new NotFoundException("Condition is not found"))
         );
     }
 

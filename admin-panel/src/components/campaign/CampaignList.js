@@ -7,6 +7,7 @@ import {
     List,
     NumberInput,
     TextField,
+    TextInput,
 } from 'react-admin';
 import QuickFilter from '../QuickFilter';
 import TriggerCampaignCreateShow from './show/CampaignShow';
@@ -15,6 +16,7 @@ import rowStyle from './rowStyle';
 const CampaignFilters = props => (
     <Filter {...props}>
         <NumberInput label="Id" source="id" />
+        <TextInput source="name" resettable />
         <QuickFilter
             source="isPublished"
             label="resources.campaign.filters.isPublished"
