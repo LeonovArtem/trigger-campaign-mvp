@@ -26,6 +26,7 @@ const ClientPlatformsShow = (props: FieldProps) => {
                         key={id}
                         size="small"
                         label={platformsById[id].name}
+                        color="primary"
                     />
                 ))}
             </Stack>

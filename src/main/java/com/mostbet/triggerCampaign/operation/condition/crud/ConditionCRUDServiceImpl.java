@@ -39,7 +39,10 @@ public class ConditionCRUDServiceImpl implements ConditionCRUDService {
 
     @Override
     public Condition update(ConditionDto<ConditionDto.Params> conditionDto) {
-        Condition condition = conditionRepository.getById(conditionDto.getId());
+        Condition condition = conditionRepository
+                .findById(conditionDto.getId())
+                .orElseThrow();
+
         conditionMapper
                 .createByConditionType(condition.getType())
                 .updateConditionFromConditionDto(conditionDto, condition);

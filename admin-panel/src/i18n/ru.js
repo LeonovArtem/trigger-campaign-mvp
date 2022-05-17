@@ -22,6 +22,8 @@ export default {
         },
         edit: 'Редактирование',
         create: 'Создать',
+        valueLabelTrue: 'Да',
+        valueLabelFalse: 'Нет',
     },
     resources: {
         condition: {

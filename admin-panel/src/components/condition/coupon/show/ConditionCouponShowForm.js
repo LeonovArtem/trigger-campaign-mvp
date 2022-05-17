@@ -2,6 +2,7 @@ import { Divider, Grid, Typography } from '@mui/material';
 import ConditionCouponLimitsShow from './ConditionCouponLimitsShow';
 import React from 'react';
 import { BooleanField, useTranslate } from 'react-admin';
+import CustomBooleanField from '../../../form/CustomBooleanField';
 
 const ShowRow = ({ label, row }) => {
     const translate = useTranslate();
@@ -58,27 +59,15 @@ const ConditionCouponShowForm = ({ condition }) => {
                 />
             )}
 
-            {condition.params.couponIsFirst && (
-                <div>
-                    <span className="showRowTitle">
-                        {translate(
-                            'resources.conditionCoupon.fields.couponIsFirst'
-                        )}
-                    </span>
-                    <BooleanField source="params.couponIsFirst" />
-                </div>
-            )}
+            <CustomBooleanField
+                value={condition.params.couponIsFirst}
+                label="resources.conditionCoupon.fields.couponIsFirst"
+            />
 
-            {condition.params.limitPerDay && (
-                <div>
-                    <span className="showRowTitle">
-                        {translate(
-                            'resources.conditionCoupon.fields.limitPerDay'
-                        )}
-                    </span>
-                    <BooleanField source="params.limitPerDay" />
-                </div>
-            )}
+            <CustomBooleanField
+                value={condition.params.limitPerDay}
+                label="resources.conditionCoupon.fields.limitPerDay"
+            />
 
             <ConditionCouponLimitsShow limits={condition.params.limits} />
         </div>

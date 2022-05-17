@@ -38,13 +38,13 @@ public class CampaignCRUDServiceImpl implements CampaignCRUDService {
 
     @Override
     public void deleteById(Integer id) {
-        TriggerCampaign campaign = campaignRepository.getById(id);
+        TriggerCampaign campaign = campaignRepository.findById(id).orElseThrow();
         campaignRepository.delete(campaign);
     }
 
     @Override
     public TriggerCampaign update(CampaignWithConditionIdsDto dto) {
-        TriggerCampaign campaign = campaignRepository.getById(dto.getId());
+        TriggerCampaign campaign = campaignRepository.findById(dto.getId()).orElseThrow();
         campaignMapper.updateTriggerCampaignFromCampaignWithConditionIdsDto(dto, campaign);
         campaignRepository.save(campaign);
 
