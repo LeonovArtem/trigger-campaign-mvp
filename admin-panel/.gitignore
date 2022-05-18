@@ -1,7 +1,7 @@
 # misc
 .DS_Store
 node_modules
-.yarn
+.yarn/*
 
 # local env files
 .env.local

@@ -27,13 +27,13 @@ const i18nProvider = polyglotI18nProvider(locale => {
 
 const App = () => {
     const restProvider = jsonServerProvider(
-        process.env.REACT_APP_DATA_PROVIDER
+        process.env.REACT_APP_DATA_PROVIDER_HOST + '/admin'
     );
-    let appCacheInMinutes = 1;
+    let appCacheInSeconds = 10;
     const queryClient = new QueryClient({
         defaultOptions: {
             queries: {
-                staleTime: appCacheInMinutes * 10 * 1000, // Set Application Query Cache in 10 sec
+                staleTime: appCacheInSeconds * 1000, // Set Application Query Cache in 10 sec
             },
         },
     });
