@@ -50,12 +50,6 @@ export const CampaignForm = ({ action }) => {
                         className="inputForm"
                         disabled={action === ACTION_EDIT}
                     />
-                    <SelectArrayInput
-                        source="clientPlatforms"
-                        choices={CLIENT_PLATFORMS}
-                        className="inputForm"
-                        resettable="true"
-                    />
                     <div>
                         <DateTimeInput
                             source="startAt"
@@ -64,6 +58,7 @@ export const CampaignForm = ({ action }) => {
                             sx={{
                                 display: 'inline-block',
                                 width: '19em',
+                                marginTop: '5px',
                             }}
                         />
                         <DateTimeInput
@@ -72,11 +67,18 @@ export const CampaignForm = ({ action }) => {
                             validate={required()}
                             sx={{
                                 display: 'inline-block',
-                                marginLeft: '32px',
+                                marginLeft: '22px',
+                                marginTop: '5px',
                                 width: '19em',
                             }}
                         />
                     </div>
+                    <SelectArrayInput
+                        source="clientPlatforms"
+                        choices={CLIENT_PLATFORMS}
+                        variant="standard"
+                        className="inputForm"
+                    />
                     <BooleanInput source="isPublished" />
                 </FormTab>
                 {action === ACTION_CREATE && (

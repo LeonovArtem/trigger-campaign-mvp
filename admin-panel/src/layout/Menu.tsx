@@ -32,7 +32,7 @@ const Menu = ({ dense = false }: MenuProps) => {
     return (
         <Box
             sx={{
-                width: open ? 200 : 50,
+                width: open ? 240 : 50,
                 marginTop: 1,
                 marginBottom: 1,
                 transition: theme =>

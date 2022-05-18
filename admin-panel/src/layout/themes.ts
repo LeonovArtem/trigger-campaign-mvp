@@ -9,7 +9,7 @@ export const darkTheme = {
         mode: 'dark' as 'dark', // Switching the dark mode on is a single property value change.
     },
     sidebar: {
-        width: 200,
+        width: 240,
     },
     components: {
         RaMenuItemLink: {
@@ -76,10 +76,10 @@ export const lightTheme = {
         mode: 'light' as 'light',
     },
     shape: {
-        borderRadius: 10,
+        borderRadius: 5,
     },
     sidebar: {
-        width: 200,
+        width: 240,
     },
     components: {
         RaMenuItemLink: {
@@ -98,6 +98,7 @@ export const lightTheme = {
                     boxShadow: 'none',
                 },
                 root: {
+                    boxShadow: 'none',
                     border: '1px solid #e0e0e3',
                     backgroundClip: 'padding-box',
                 },

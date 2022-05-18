@@ -74,7 +74,7 @@ export default {
             },
         },
         campaign: {
-            name: 'Кампании |||| Кампании',
+            name: 'Тригерные Кампании |||| Тригерные Кампании',
             conditions: 'Условия',
             showConditionParams: 'Параметры',
             tabs: {

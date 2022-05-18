@@ -1,21 +1,20 @@
 import { Divider, Grid, Typography } from '@mui/material';
 import ConditionCouponLimitsShow from './ConditionCouponLimitsShow';
 import React from 'react';
-import { BooleanField, useTranslate } from 'react-admin';
+import { useTranslate } from 'react-admin';
 import CustomBooleanField from '../../../form/CustomBooleanField';
 
 const ShowRow = ({ label, row }) => {
     const translate = useTranslate();
     return (
         <div>
-            <span className="showRowTitle">{translate(label)}</span>
+            <span className="showRowTitle">{translate(label)}:</span>
             <span className="showRowParam">{row}</span>
         </div>
     );
 };
 
 const ConditionCouponShowForm = ({ condition }) => {
-    const translate = useTranslate();
     return (
         <div>
             <Grid container spacing={2}>
