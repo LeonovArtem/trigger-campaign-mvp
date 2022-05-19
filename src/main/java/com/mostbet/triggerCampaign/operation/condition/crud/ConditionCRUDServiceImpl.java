@@ -47,6 +47,8 @@ public class ConditionCRUDServiceImpl implements ConditionCRUDService {
         conditionMapper
                 .createByConditionType(condition.getType())
                 .updateConditionFromConditionDto(conditionDto, condition);
+
+        condition.getParams().forEach(conditionParam -> conditionParam.setCondition(condition));
         conditionRepository.save(condition);
 
         return condition;

@@ -26,6 +26,9 @@ public class CouponCloseRequestPayloadDto implements RequestDto.Payload{
     @JsonProperty("coupon_type")
     private CouponType couponType;
 
+    @JsonProperty("coefficient")
+    private BigDecimal coefficient;
+
     @JsonProperty("coupon_status")
     private CouponStatus couponStatus;
 }

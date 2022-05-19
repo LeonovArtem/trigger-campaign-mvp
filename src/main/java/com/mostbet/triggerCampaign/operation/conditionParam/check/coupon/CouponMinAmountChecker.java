@@ -19,9 +19,9 @@ public class CouponMinAmountChecker implements CheckerInterface {
     @Override
     public ParamCheckerResponse behave(ParamCheckerRequest request) {
         CouponMinAmountDto conditionCouponMinAmountDto = (CouponMinAmountDto) request.getConditionParam().getParamValue();
-        CouponCloseRequestPayloadDto coupon = getCoupon(request);
+        CouponCloseRequestPayloadDto coupon = request.getCoupon();
         boolean isFulfilled = isCurrenciesEqual(coupon, conditionCouponMinAmountDto) &&
-                              isAmountsEqual(coupon, conditionCouponMinAmountDto);
+                              isCouponAmountEqualOrGreaterConditionAmount(coupon, conditionCouponMinAmountDto);
 
         return new ParamCheckerResponse(
                 isFulfilled,
@@ -29,17 +29,11 @@ public class CouponMinAmountChecker implements CheckerInterface {
         );
     }
 
-    private CouponCloseRequestPayloadDto getCoupon(ParamCheckerRequest request) {
-        return (CouponCloseRequestPayloadDto) request
-                .getEntitySet()
-                .getEventRequest().getPayload();
-    }
-
     private boolean isCurrenciesEqual(CouponCloseRequestPayloadDto coupon, CouponMinAmountDto conditionCouponMinAmountDto) {
         return coupon.getCurrencyCode().equals(conditionCouponMinAmountDto.getCurrencyCode());
     }
 
-    private boolean isAmountsEqual(CouponCloseRequestPayloadDto coupon, CouponMinAmountDto conditionCouponMinAmountDto) {
+    private boolean isCouponAmountEqualOrGreaterConditionAmount(CouponCloseRequestPayloadDto coupon, CouponMinAmountDto conditionCouponMinAmountDto) {
         return coupon.getAmount().compareTo(conditionCouponMinAmountDto.getAmount()) >= 0;
     }
 }

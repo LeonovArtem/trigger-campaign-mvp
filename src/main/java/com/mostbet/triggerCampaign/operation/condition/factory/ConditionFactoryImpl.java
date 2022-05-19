@@ -19,6 +19,8 @@ public class ConditionFactoryImpl implements ConditionFactory {
         Condition condition = conditionMapper
                 .createByConditionType(conditionDto.getConditionType())
                 .dtoToCondition(conditionDto);
+
+        condition.getParams().forEach(conditionParam -> conditionParam.setCondition(condition));
         conditionRepository.save(condition);
 
         return condition;

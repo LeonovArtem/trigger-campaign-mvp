@@ -4,12 +4,12 @@ import com.mostbet.triggerCampaign.entity.ConditionParam;
 import com.mostbet.triggerCampaign.entity.conditionParamValue.ParamValue;
 import com.mostbet.triggerCampaign.entity.dto.ConditionDto;
 
-import java.util.List;
+import java.util.Set;
 
 public interface ConditionParamsMapper {
-    ConditionDto.Params conditionParamsToParamsDto(List<ConditionParam> conditionParams);
+    ConditionDto.Params conditionParamsToParamsDto(Set<ConditionParam> conditionParams);
 
-    List<ConditionParam> paramsDtoToConditionParams(ConditionDto.Params params);
+    Set<ConditionParam> paramsDtoToConditionParams(ConditionDto.Params params);
 
     default ConditionParam createConditionParam(ConditionParam.ConditionParamName paramName, ParamValue value) {
         ConditionParam conditionParam = new ConditionParam();

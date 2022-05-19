@@ -12,6 +12,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -37,7 +38,7 @@ public class CouponParamsDto implements ConditionDto.Params {
     private Boolean limitPerDay;
 
     @JsonProperty("limits")
-    private List<ConditionCouponDto.CurrencyLimitDto> limits;
+    private Set<ConditionCouponDto.CurrencyLimitDto> limits;
 
     public static class CurrencyLimitDto {
         @JsonProperty("currency")

@@ -7,7 +7,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "trigger_campaign_condition")
@@ -28,13 +28,8 @@ public class Condition {
     private Type type;
 
     @Fetch(FetchMode.JOIN)
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "trigger_campaign_condition_params",
-            joinColumns = @JoinColumn(name = "condition_id"),
-            inverseJoinColumns = @JoinColumn(name = "params_id")
-    )
-    private List<ConditionParam> params;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "condition", orphanRemoval = true)
+    private Set<ConditionParam> params;
 
     public enum Type {
         COUPON,

@@ -3,7 +3,6 @@ package com.mostbet.triggerCampaign.entity.mapper;
 import com.mostbet.triggerCampaign.entity.Condition;
 import com.mostbet.triggerCampaign.entity.dto.ConditionDto;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")

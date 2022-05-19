@@ -9,15 +9,15 @@ import com.mostbet.triggerCampaign.entity.dto.conditionParams.CouponParamsDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public abstract class CouponParamsMapper implements ConditionParamsMapper {
     @Override
-    public CouponParamsDto conditionParamsToParamsDto(List<ConditionParam> conditionParams) {
+    public CouponParamsDto conditionParamsToParamsDto(Set<ConditionParam> conditionParams) {
         CouponParamsDto couponParamsDto = new CouponParamsDto();
-        List<ConditionCouponDto.CurrencyLimitDto> limits = new ArrayList<>();
+        Set<ConditionCouponDto.CurrencyLimitDto> limits = new HashSet<>();
         conditionParams.forEach(conditionParam -> {
             if (conditionParam.getParamValue() instanceof CouponMinCoefficientDto) {
                 couponParamsDto.setMinCoefficient(
@@ -73,8 +73,8 @@ public abstract class CouponParamsMapper implements ConditionParamsMapper {
     }
 
     @Override
-    public List<ConditionParam> paramsDtoToConditionParams(ConditionDto.Params params) {
-        List<ConditionParam> conditionParamList = new ArrayList<>();
+    public Set<ConditionParam> paramsDtoToConditionParams(ConditionDto.Params params) {
+        Set<ConditionParam> conditionParamList = new HashSet<>();
         CouponParamsDto couponParams = (CouponParamsDto) params;
 
         if (couponParams.getMinCoefficient() != null) {
@@ -113,7 +113,7 @@ public abstract class CouponParamsMapper implements ConditionParamsMapper {
             );
         }
 
-        if (couponParams.getCouponIsFirst() != null) {
+        if (couponParams.getCouponIsFirst()) {
             conditionParamList.add(
                     createConditionParam(
                             ConditionParam.ConditionParamName.COUPON_IS_FIRST,
@@ -122,7 +122,7 @@ public abstract class CouponParamsMapper implements ConditionParamsMapper {
             );
         }
 
-        if (couponParams.getLimitPerDay() != null) {
+        if (couponParams.getLimitPerDay()) {
             conditionParamList.add(
                     createConditionParam(
                             ConditionParam.ConditionParamName.CONDITION_FULFILLMENT_LIMIT_PER_DAY,

@@ -31,8 +31,12 @@ public class ConditionParam {
     private ConditionParamName name;
 
     @Type(type = "json")
-    @Column(name = "value", columnDefinition = "json")
+    @Column(name = "value", columnDefinition = "json", nullable = false)
     private ParamValue paramValue;
+
+    @ManyToOne
+    @JoinColumn(name = "condition_id", nullable = false)
+    private Condition condition;
 
     public enum ConditionParamName {
         COUPON_TYPE,
