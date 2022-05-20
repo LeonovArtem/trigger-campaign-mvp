@@ -27,6 +27,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 def springCoreVersion = '5.3.6.RELEASE'
+def bonusApiClient = '1.1.1'
 def aspectjVersion = '1.9.9.1'
 def publicApiClientVersion = '1.0.20'
 def internalApiVersion = '1.0.0'
@@ -106,8 +107,10 @@ dependencies {
     implementation group: 'com.newrelic.agent.java', name: 'newrelic-agent', version: "${newRelicVersion}"
     implementation group: 'com.newrelic.agent.java', name: 'newrelic-api', version: "${newRelicVersion}"
 
+    implementation group: 'com.mostbet.bonus', name: 'bonus-api-client', version: "${bonusApiClient}"
     implementation group: 'com.mostbet', name: 'public-api-client', version: "${publicApiClientVersion}"
     implementation group: 'com.mostbet', name: 'internal-api', version: "${internalApiVersion}"
+
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
 }
 
