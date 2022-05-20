@@ -6,7 +6,6 @@ import com.mostbet.triggerCampaign.entity.conditionParamValue.coupon.CouponTypeD
 import com.mostbet.triggerCampaign.operation.conditionParam.check.CheckerInterface;
 import com.mostbet.triggerCampaign.operation.conditionParam.check.common.dto.ParamCheckerRequest;
 import com.mostbet.triggerCampaign.operation.conditionParam.check.common.dto.ParamCheckerResponse;
-import com.mostbet.triggerCampaign.transport.core.dto.payload.CouponCloseRequestPayloadDto;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +19,7 @@ public class CouponTypeChecker implements CheckerInterface {
     @Override
     public ParamCheckerResponse behave(ParamCheckerRequest request) {
         CouponTypeDto conditionCouponType = (CouponTypeDto) request.getConditionParam().getParamValue();
-        CouponType couponType = getCouponType(request);
+        CouponType couponType = request.getCoupon().getCouponType();
 
         boolean isFulfilled = conditionCouponType.getCouponType().equals(couponType);
 
@@ -28,13 +27,5 @@ public class CouponTypeChecker implements CheckerInterface {
                 isFulfilled,
                 request.getConditionParam()
         );
-    }
-
-    private CouponType getCouponType(ParamCheckerRequest request){
-        CouponCloseRequestPayloadDto payload = (CouponCloseRequestPayloadDto) request
-                .getEntitySet()
-                .getEventRequest().getPayload();
-
-        return payload.getCouponType();
     }
 }

@@ -29,11 +29,17 @@ public class CouponMinAmountChecker implements CheckerInterface {
         );
     }
 
-    private boolean isCurrenciesEqual(CouponCloseRequestPayloadDto coupon, CouponMinAmountDto conditionCouponMinAmountDto) {
+    private boolean isCurrenciesEqual(
+            CouponCloseRequestPayloadDto coupon,
+            CouponMinAmountDto conditionCouponMinAmountDto
+    ) {
         return coupon.getCurrencyCode().equals(conditionCouponMinAmountDto.getCurrencyCode());
     }
 
-    private boolean isCouponAmountEqualOrGreaterConditionAmount(CouponCloseRequestPayloadDto coupon, CouponMinAmountDto conditionCouponMinAmountDto) {
+    private boolean isCouponAmountEqualOrGreaterConditionAmount(
+            CouponCloseRequestPayloadDto coupon,
+            CouponMinAmountDto conditionCouponMinAmountDto
+    ) {
         return coupon.getAmount().compareTo(conditionCouponMinAmountDto.getAmount()) >= 0;
     }
 }

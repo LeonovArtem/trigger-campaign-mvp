@@ -23,14 +23,9 @@
   "condition_param": [
     {
       "id": 1,
+      "condition_id": 1,
       "name": "COUPON_TYPE",
       "value": "{\"couponType\": \"ordinar\", \"paramName\": \"COUPON_TYPE\"}"
-    }
-  ],
-  "trigger_campaign_condition_params": [
-    {
-      "condition_id": 1,
-      "params_id": 1
     }
   ],
   "trigger_campaign_trigger_campaign_condition": [
