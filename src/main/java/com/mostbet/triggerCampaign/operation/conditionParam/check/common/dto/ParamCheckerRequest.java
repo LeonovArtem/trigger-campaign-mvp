@@ -3,6 +3,7 @@ package com.mostbet.triggerCampaign.operation.conditionParam.check.common.dto;
 import com.mostbet.triggerCampaign.entity.ConditionParam;
 import com.mostbet.triggerCampaign.operation.triggerCampaign.common.dto.CampaignProcessRequest;
 import com.mostbet.triggerCampaign.transport.core.dto.payload.CouponCloseRequestPayloadDto;
+import com.mostbet.triggerCampaign.transport.core.dto.payload.RefillSuccessRequestPayloadDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -16,5 +17,9 @@ public class ParamCheckerRequest {
 
     public CouponCloseRequestPayloadDto getCoupon() {
         return (CouponCloseRequestPayloadDto) getEntitySet().getEventRequest().getPayload();
+    }
+
+    public RefillSuccessRequestPayloadDto getRefill() {
+        return (RefillSuccessRequestPayloadDto) getEntitySet().getEventRequest().getPayload();
     }
 }

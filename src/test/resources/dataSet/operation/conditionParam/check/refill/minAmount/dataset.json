@@ -16,16 +16,16 @@
   "trigger_campaign_condition": [
     {
       "id": 1,
-      "name": "on coupon min amount",
-      "type": "COUPON"
+      "name": "on refill min amount",
+      "type": "REFILL"
     }
   ],
   "condition_param": [
     {
       "id": 1,
       "condition_id": 1,
-      "name": "COUPON_MIN_AMOUNT",
-      "value": "{\"paramName\": \"COUPON_MIN_AMOUNT\", \"amount\": 200,  \"currencyCode\": \"RUB\"}"
+      "name": "REFILL_MIN_AMOUNT",
+      "value": "{\"paramName\": \"REFILL_MIN_AMOUNT\", \"amount\": 200,  \"currencyCode\": \"RUB\"}"
     }
   ],
   "trigger_campaign_trigger_campaign_condition": [

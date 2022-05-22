@@ -1,5 +1,6 @@
-package com.mostbet.triggerCampaign.entity.conditionParamValue;
+package com.mostbet.triggerCampaign.entity.conditionParamValue.refill;
 
+import com.mostbet.triggerCampaign.entity.conditionParamValue.ParamValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
