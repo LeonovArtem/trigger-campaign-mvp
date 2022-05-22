@@ -170,13 +170,17 @@ const ConditionCouponForm = ({ action }) => {
                                 label="resources.conditionCoupon.fields.limits.currency"
                                 source="currency"
                                 disabled
-                                fullWidth
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
                                             $
                                         </InputAdornment>
                                     ),
+                                }}
+                                variant="standard"
+                                sx={{
+                                    marginTop: 2,
+                                    width: 65,
                                 }}
                             />
                             <TextInput
