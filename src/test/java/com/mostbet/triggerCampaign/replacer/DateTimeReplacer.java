@@ -1,4 +1,4 @@
-package com.mostbet.triggerCampaign.Replacer;
+package com.mostbet.triggerCampaign.replacer;
 
 import com.github.database.rider.core.replacers.Replacer;
 import org.dbunit.dataset.ReplacementDataSet;

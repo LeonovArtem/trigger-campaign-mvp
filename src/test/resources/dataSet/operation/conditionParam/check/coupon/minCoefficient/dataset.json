@@ -1,0 +1,37 @@
+{
+  "trigger_campaign": [
+    {
+      "id": 1,
+      "name": "campaign with a condition on the minimal coefficient of coupon",
+      "description": "",
+      "is_published": 1,
+      "max_fulfillment_count": 1,
+      "user_availability": "ALL",
+      "start_at": "[PAST_DATE]",
+      "end_at": "[FUTURE_DATE]",
+      "created_at": "[PAST_DATE]",
+      "updated_at": "[PAST_DATE]"
+    }
+  ],
+  "trigger_campaign_condition": [
+    {
+      "id": 1,
+      "name": "check coupon minimal coefficient",
+      "type": "COUPON"
+    }
+  ],
+  "condition_param": [
+    {
+      "id": 1,
+      "condition_id": 1,
+      "name": "COUPON_MIN_COEFFICIENT",
+      "value": "{\"paramName\": \"COUPON_MIN_COEFFICIENT\", \"coefficient\": 2.25}"
+    }
+  ],
+  "trigger_campaign_trigger_campaign_condition": [
+    {
+      "trigger_campaign_id": 1,
+      "trigger_campaign_condition_id": 1
+    }
+  ]
+}

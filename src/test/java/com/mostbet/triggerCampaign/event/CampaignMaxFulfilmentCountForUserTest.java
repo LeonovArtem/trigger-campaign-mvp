@@ -79,8 +79,7 @@ public class CampaignMaxFulfilmentCountForUserTest extends BaseFunctionalTest {
                 ResourceUtils.getFile(
                         "classpath:dataSet/eventProcess/campaign/onMaxFulfilmentCountForUser/request/coupon-closed-content.json"
                 ),
-                new TypeReference<RequestDto<CouponCloseRequestPayloadDto>>() {
-                }
+                new TypeReference<>() {}
         );
     }
 }

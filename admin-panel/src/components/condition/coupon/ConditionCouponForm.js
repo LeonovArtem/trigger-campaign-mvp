@@ -134,7 +134,7 @@ const ConditionCouponForm = ({ action }) => {
                         label="resources.conditionCoupon.fields.couponMinCoefficient"
                         source="params.couponMinCoefficient"
                         min={1}
-                        step={0.1}
+                        step={0.01}
                         className="inputForm"
                         validate={required()}
                     />
