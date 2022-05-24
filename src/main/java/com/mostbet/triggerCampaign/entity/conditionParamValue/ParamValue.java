@@ -11,6 +11,7 @@ import java.io.Serializable;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "paramName")
 @JsonSubTypes({
         @JsonSubTypes.Type(name = "COUPON_MIN_AMOUNT", value = CouponMinAmountDto.class),
+        @JsonSubTypes.Type(name = "COUPON_MIN_SUM_AMOUNT", value = CouponMinAmountDto.class),
         @JsonSubTypes.Type(name = "COUPON_MIN_COEFFICIENT", value = CouponMinCoefficientDto.class),
         @JsonSubTypes.Type(name = "COUPON_TYPE", value = CouponTypeDto.class),
         @JsonSubTypes.Type(name = "COUPON_STATUS", value = CouponStatusDto.class),

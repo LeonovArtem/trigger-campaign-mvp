@@ -22,4 +22,8 @@ public class ParamCheckerRequest {
     public RefillSuccessRequestPayloadDto getRefill() {
         return (RefillSuccessRequestPayloadDto) getEntitySet().getEventRequest().getPayload();
     }
+
+    public Integer getUserId() {
+        return getEntitySet().getEventRequest().getUserId();
+    }
 }
