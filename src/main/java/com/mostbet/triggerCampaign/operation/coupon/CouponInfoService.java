@@ -3,7 +3,6 @@ package com.mostbet.triggerCampaign.operation.coupon;
 import com.mostbet.publicapi.sdk.model.UserCouponsResponse;
 import com.mostbet.triggerCampaign.configuration.api.MostbetComApiClientConfiguration;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class CouponInfoService {
     private final MostbetComApiClientConfiguration.CouponApiClient couponApiClient;
 
@@ -34,7 +33,7 @@ public class CouponInfoService {
         ResponseEntity<UserCouponsResponse> response = getAllByUser();
 
         double sum = response.getBody().getData()
-                .stream()
+                .parallelStream()
                 .mapToDouble(placedCoupon -> Double.parseDouble(placedCoupon.getAmount()))
                 .sum();
 

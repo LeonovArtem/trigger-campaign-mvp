@@ -12,14 +12,13 @@ import com.mostbet.triggerCampaign.operation.triggerCampaign.common.dto.Campaign
 import com.mostbet.triggerCampaign.operation.triggerCampaign.common.dto.CampaignProcessResponse;
 import com.mostbet.triggerCampaign.operation.triggerCampaign.common.dto.CampaignProcessResponse.CampaignProcessResponseBuilder;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class TriggerCampaignProcessServiceImpl implements TriggerCampaignProcessService {
     private final CampaignCheckService triggerCampaignCheck;
     private final FulfillmentRegisterService fulfillmentRegisterService;

@@ -6,13 +6,12 @@ import com.mostbet.triggerCampaign.entity.dto.criteria.TriggerCampaignCriteria;
 import com.mostbet.triggerCampaign.entity.mapper.TriggerCampaignMapper;
 import com.mostbet.triggerCampaign.operation.triggerCampaign.crud.CampaignCRUDService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 @RequestMapping("/admin/campaign")
 public class TriggerCampaignController {
     private final CampaignCRUDService campaignCRUDService;

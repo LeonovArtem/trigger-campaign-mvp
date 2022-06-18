@@ -7,7 +7,6 @@ import com.mostbet.triggerCampaign.operation.triggerCampaign.process.TriggerCamp
 import com.mostbet.triggerCampaign.repository.TriggerCampaignRepository;
 import com.mostbet.triggerCampaign.transport.core.dto.RequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class EventProcessServiceImpl implements EventProcessService {
     private final TriggerCampaignRepository campaignRepository;
     private final TriggerCampaignProcessService campaignProcessService;

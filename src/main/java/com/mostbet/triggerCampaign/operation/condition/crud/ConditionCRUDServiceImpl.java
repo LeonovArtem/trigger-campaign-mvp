@@ -9,7 +9,6 @@ import com.mostbet.triggerCampaign.repository.ConditionRepository;
 import com.mostbet.triggerCampaign.repository.specification.ConditionSpecification;
 import com.mostbet.triggerCampaign.web.controller.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class ConditionCRUDServiceImpl implements ConditionCRUDService {
     private final ConditionFactory conditionFactory;
     private final ConditionRepository conditionRepository;

@@ -11,14 +11,13 @@ import com.mostbet.triggerCampaign.operation.triggerCampaign.common.dto.Campaign
 import com.mostbet.triggerCampaign.repository.ConditionRepository;
 import com.mostbet.triggerCampaign.repository.FulfillmentRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class CampaignCheckServiceImpl implements CampaignCheckService {
     private final ConditionCheckService conditionChecker;
     private final ConditionRepository conditionRepository;

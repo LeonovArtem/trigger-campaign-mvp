@@ -5,12 +5,11 @@ import com.mostbet.triggerCampaign.transport.core.dto.RequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @EnableRabbit
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class RabbitMQListener {
     private final EventProcessService eventProcessService;
 

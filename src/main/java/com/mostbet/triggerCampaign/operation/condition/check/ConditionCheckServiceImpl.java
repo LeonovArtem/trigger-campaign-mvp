@@ -9,7 +9,6 @@ import com.mostbet.triggerCampaign.operation.conditionParam.check.ParamCheckFact
 import com.mostbet.triggerCampaign.operation.conditionParam.check.common.dto.ParamCheckerRequest;
 import com.mostbet.triggerCampaign.operation.conditionParam.check.common.dto.ParamCheckerResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class ConditionCheckServiceImpl implements ConditionCheckService {
     private final ParamCheckFactory paramCheckFactory;
 

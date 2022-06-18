@@ -1,14 +1,13 @@
 package com.mostbet.triggerCampaign.operation.event;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mostbet.triggerCampaign.operation.event.dto.CampaignCheckResultMessageLog;
 import com.mostbet.triggerCampaign.operation.triggerCampaign.check.dto.CampaignCheckResponse;
 import com.mostbet.triggerCampaign.operation.triggerCampaign.common.dto.CampaignProcessResponse;
 import com.mostbet.triggerCampaign.transport.core.dto.RequestDto;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,7 @@ import java.util.List;
 
 @Service
 @Primary
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 @Slf4j
 public class LoggerDecorator implements EventProcessService {
     private final EventProcessService inner;

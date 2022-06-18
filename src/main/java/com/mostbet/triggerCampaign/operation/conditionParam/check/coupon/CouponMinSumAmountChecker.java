@@ -8,13 +8,12 @@ import com.mostbet.triggerCampaign.operation.conditionParam.check.common.dto.Par
 import com.mostbet.triggerCampaign.operation.coupon.CouponInfoService;
 import com.mostbet.triggerCampaign.transport.core.dto.payload.CouponCloseRequestPayloadDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class CouponMinSumAmountChecker implements CheckerInterface {
     private final CouponInfoService couponInfoService;
 

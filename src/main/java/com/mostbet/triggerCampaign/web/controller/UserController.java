@@ -6,13 +6,12 @@ import com.mostbet.publicapi.sdk.model.LoginCheckResponse;
 import com.mostbet.publicapi.sdk.model.UserProfile;
 import com.mostbet.triggerCampaign.configuration.api.MostbetComApiClientConfiguration;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("user")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class UserController {
     private final MostbetComApiClientConfiguration.UsersApiClient apiClient;
     private final MostbetComApiClientConfiguration.UsersAuthApiClient usersAuthApiClient;

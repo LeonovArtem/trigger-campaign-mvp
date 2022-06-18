@@ -8,8 +8,6 @@ import com.mostbet.triggerCampaign.operation.triggerCampaign.factory.TriggerCamp
 import com.mostbet.triggerCampaign.repository.TriggerCampaignRepository;
 import com.mostbet.triggerCampaign.repository.specification.CampaignSpecification;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class CampaignCRUDServiceImpl implements CampaignCRUDService {
     private final TriggerCampaignRepository campaignRepository;
     private final TriggerCampaignFactory triggerCampaignFactory;

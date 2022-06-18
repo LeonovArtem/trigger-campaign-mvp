@@ -6,14 +6,13 @@ import com.mostbet.triggerCampaign.operation.triggerCampaign.common.dto.Campaign
 import com.mostbet.triggerCampaign.repository.ConditionFulfillmentRepository;
 import com.mostbet.triggerCampaign.repository.FulfillmentRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class FulfillmentRegisterServiceImpl implements FulfillmentRegisterService {
     private final FulfillmentRepository fulfillmentRepository;
     private final ConditionFulfillmentRepository conditionFulfillmentRepository;
